@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0ws0gjyo7pfc"]
+
+[ext_resource type="Texture2D" uid="uid://cat00n03vwlad" path="res://sprites/BurBur + extras.png" id="1_ppyd0"]
+[ext_resource type="Script" uid="uid://cp6uxc5blfo7h" path="res://Scripts/Dust.gd" id="2_t20bb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8cxj"]
+atlas = ExtResource("1_ppyd0")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg1ge"]
+atlas = ExtResource("1_ppyd0")
+region = Rect2(0, 32, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wcu6"]
+atlas = ExtResource("1_ppyd0")
+region = Rect2(0, 48, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6c2so"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8cxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg1ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wcu6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_q3ymm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4uwq8"]
+resource_name = "Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywral"]
+_data = {
+&"RESET": SubResource("Animation_q3ymm"),
+&"Start": SubResource("Animation_4uwq8")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.604167, 0.5625)
+sprite_frames = SubResource("SpriteFrames_6c2so")
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+script = ExtResource("2_t20bb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ywral")
+}
+autoplay = "Start"
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

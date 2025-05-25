@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7eq6rqvb2ddb"]
+
+[ext_resource type="Script" uid="uid://t2hnyphnjgh1" path="res://Scripts/pause_menu.gd" id="1_20jo8"]
+[ext_resource type="FontFile" uid="uid://dv8oweavvnpjf" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_4dpgu"]
+
+[node name="Pause Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_20jo8")
+
+[node name="Resume" type="Button" parent="."]
+process_mode = 3
+layout_mode = 2
+anchor_right = 0.094
+anchor_bottom = 0.056
+offset_right = -53.32
+offset_bottom = -0.32
+theme_override_fonts/font = ExtResource("2_4dpgu")
+text = "RESUME"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+anchor_right = 0.094
+anchor_bottom = 0.056
+offset_left = 77.0
+offset_right = -0.320007
+offset_bottom = -0.32
+theme_override_fonts/font = ExtResource("2_4dpgu")
+text = "QUIT"
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

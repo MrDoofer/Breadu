@@ -1,0 +1,194 @@
+[gd_scene load_steps=22 format=3 uid="uid://cvk1i2njqmxjd"]
+
+[ext_resource type="Script" uid="uid://qffraj7ef4r8" path="res://Scripts/grass.gd" id="1_jwwo6"]
+[ext_resource type="Texture2D" uid="uid://bauk05youv3so" path="res://sprites/Spritesheet.png" id="2_7bt0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccvh5"]
+size = Vector2(5, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdjrk"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsoax"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn7gt"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byxjy"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hi6q"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx6eb"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e5v4"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvs45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdjrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsoax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn7gt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byxjy")
+}],
+"loop": false,
+"name": &"Released",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hi6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx6eb")
+}],
+"loop": false,
+"name": &"Stepped on",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e5v4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_6s8e4"]
+script/source = "extends Area2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
+
+func _on_body_entered(body):
+	animated_sprite_2d.play(\"Stepped On\")
+	
+	
+
+
+func _on_body_exited(body):
+	animated_sprite_2d.play(\"Released\")
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le0ci"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc0n1"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cianv"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up7gt"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv8gn"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjcl5"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v3qx"]
+atlas = ExtResource("2_7bt0i")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a0eg2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le0ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc0n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cianv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up7gt")
+}],
+"loop": false,
+"name": &"Released",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv8gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjcl5")
+}],
+"loop": false,
+"name": &"Stepped On",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v3qx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgrri"]
+size = Vector2(5, 3)
+
+[node name="Grass" type="Node2D"]
+
+[node name="G1" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+script = ExtResource("1_jwwo6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="G1"]
+position = Vector2(-3.5, 6.5)
+shape = SubResource("RectangleShape2D_ccvh5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="G1"]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_kvs45")
+autoplay = "default"
+
+[node name="G2" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+script = SubResource("GDScript_6s8e4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="G2"]
+position = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_a0eg2")
+animation = &"Released"
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="G2"]
+position = Vector2(4.5, 6.5)
+shape = SubResource("RectangleShape2D_rgrri")
+
+[connection signal="body_entered" from="G1" to="G1" method="_on_body_entered"]
+[connection signal="body_exited" from="G1" to="G1" method="_on_body_exited"]
+[connection signal="body_entered" from="G2" to="G1" method="_on_g_2_body_entered"]
+[connection signal="body_exited" from="G2" to="G1" method="_on_g_2_body_exited"]

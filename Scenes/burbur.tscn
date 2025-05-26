@@ -65,7 +65,7 @@ texture_filter = 1
 position = Vector2(2.38419e-07, -0.5)
 scale = Vector2(0.525, 0.5625)
 sprite_frames = SubResource("SpriteFrames_n1de0")
-animation = &"Walking"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

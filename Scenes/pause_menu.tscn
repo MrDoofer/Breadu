@@ -18,8 +18,10 @@ process_mode = 3
 layout_mode = 2
 anchor_right = 0.094
 anchor_bottom = 0.056
-offset_right = -53.32
-offset_bottom = -0.32
+offset_left = 22.0
+offset_top = 1.0
+offset_right = 58.92
+offset_bottom = 18.92
 theme_override_fonts/font = ExtResource("2_4dpgu")
 text = "RESUME"
 
@@ -27,11 +29,41 @@ text = "RESUME"
 layout_mode = 2
 anchor_right = 0.094
 anchor_bottom = 0.056
-offset_left = 77.0
-offset_right = -0.320007
-offset_bottom = -0.32
+offset_left = 96.0
+offset_right = 108.92
+offset_bottom = 17.92
 theme_override_fonts/font = ExtResource("2_4dpgu")
 text = "QUIT"
 
+[node name="Save" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.131
+anchor_bottom = 0.096
+offset_left = 24.0
+offset_top = 31.0
+offset_right = 28.08
+offset_bottom = 41.72
+theme_override_fonts/font = ExtResource("2_4dpgu")
+text = "SAVE"
+
+[node name="Load" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.117
+anchor_bottom = 0.097
+offset_left = 77.0
+offset_top = 31.0
+offset_right = 100.56
+offset_bottom = 41.54
+theme_override_fonts/font = ExtResource("2_4dpgu")
+text = "LOAD"
+
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Save" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_resume_pressed"]

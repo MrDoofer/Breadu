@@ -258,6 +258,7 @@ position = Vector2(257, 112)
 script = ExtResource("10_rfjv2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="screen things"]
+layer = 2
 
 [node name="Crt" type="ColorRect" parent="screen things/CanvasLayer"]
 material = SubResource("ShaderMaterial_0ev06")

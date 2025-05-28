@@ -160,7 +160,7 @@ noise = SubResource("FastNoiseLite_ncfhr")
 shader = ExtResource("6_olox2")
 shader_parameter/CAST_COLOR = Color(0, 0, 0.211765, 0)
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_k1ss2")
-shader_parameter/speed = Vector2(0.2, 0.03)
+shader_parameter/speed = Vector2(0.2, 0.3)
 shader_parameter/wave_strength = 3.0
 shader_parameter/scale_y = 2.0
 shader_parameter/y_zoom = 0.3
@@ -194,15 +194,18 @@ script = ExtResource("1_o0h88")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 90)
 
-[node name="Burbur" parent="." instance=ExtResource("1_txd6a")]
-z_index = 1
-position = Vector2(252, 144)
-
 [node name="map" type="Node" parent="."]
 
 [node name="bg001" type="Sprite2D" parent="map"]
 position = Vector2(160, 90)
 texture = ExtResource("12_rku1e")
+
+[node name="Geode" parent="map" instance=ExtResource("9_2vfwe")]
+position = Vector2(120, 147)
+
+[node name="Burbur" parent="map" instance=ExtResource("1_txd6a")]
+z_index = 1
+position = Vector2(252, 144)
 
 [node name="TileMap" type="TileMap" parent="map"]
 material = SubResource("ShaderMaterial_yog4a")
@@ -235,9 +238,6 @@ position = Vector2(203, 143)
 
 [node name="Grass7" parent="map" instance=ExtResource("6_2t1ve")]
 position = Vector2(68, 135)
-
-[node name="Geode" parent="map" instance=ExtResource("9_2vfwe")]
-position = Vector2(128, 147)
 
 [node name="Yooperlite" parent="map" instance=ExtResource("8_rfjv2")]
 position = Vector2(178, 105)

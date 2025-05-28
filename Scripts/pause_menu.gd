@@ -1,5 +1,4 @@
 extends Control
-@onready var loaf = $"../Loaf"
 @onready var main = $".."
 @onready var resume = $Resume
 var save_path = "user://variable.save"

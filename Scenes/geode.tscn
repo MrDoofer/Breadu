@@ -1,53 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://dixfxgd3g4sro"]
+[gd_scene load_steps=7 format=3 uid="uid://dp1u4lb4ux123"]
 
-[ext_resource type="Script" uid="uid://cyjixyt55quau" path="res://Scripts/Geode.gd" id="1_3x4c6"]
 [ext_resource type="Texture2D" uid="uid://dsqu1hyc7mdc6" path="res://sprites/Geode.png" id="1_rfead"]
+[ext_resource type="Script" uid="uid://0e06w3jc5omw" path="res://Scripts/geode.gd" id="2_g5el4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sv35t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja383"]
 atlas = ExtResource("1_rfead")
 region = Rect2(16, 0, 16, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1aupl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n087c"]
 atlas = ExtResource("1_rfead")
 region = Rect2(0, 0, 8, 8)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ivgdg"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bxnj8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sv35t")
+"texture": SubResource("AtlasTexture_ja383")
 }],
 "loop": true,
-"name": &"Cut",
+"name": &"Cracked",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1aupl")
+"texture": SubResource("AtlasTexture_n087c")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpypd"]
-radius = 4.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14v8s"]
+radius = 5.0
 height = 10.0
 
 [node name="Geode" type="Area2D"]
-collision_mask = 2
-script = ExtResource("1_3x4c6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
-sprite_frames = SubResource("SpriteFrames_ivgdg")
-animation = &"Cut"
+sprite_frames = SubResource("SpriteFrames_bxnj8")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_gpypd")
+shape = SubResource("CapsuleShape2D_14v8s")
+script = ExtResource("2_g5el4")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="." to="CollisionShape2D" method="_on_geode_body_entered"]
+[connection signal="body_exited" from="." to="CollisionShape2D" method="_on_geode_body_exited"]

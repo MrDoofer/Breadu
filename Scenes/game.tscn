@@ -9,7 +9,7 @@
 [ext_resource type="Shader" uid="uid://dds2hq8phrbw8" path="res://Shaders/Water.gdshader" id="6_olox2"]
 [ext_resource type="PackedScene" uid="uid://b7eq6rqvb2ddb" path="res://Scenes/pause_menu.tscn" id="7_4ca43"]
 [ext_resource type="PackedScene" uid="uid://cw7brtmj21jau" path="res://Scenes/yooperlite.tscn" id="8_rfjv2"]
-[ext_resource type="PackedScene" uid="uid://dixfxgd3g4sro" path="res://Scenes/geode.tscn" id="9_2vfwe"]
+[ext_resource type="PackedScene" uid="uid://dp1u4lb4ux123" path="res://Scenes/geode.tscn" id="9_2vfwe"]
 [ext_resource type="Shader" uid="uid://bo7sem5soor4h" path="res://Shaders/rimlight.gdshader" id="10_ldgsr"]
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
@@ -200,13 +200,6 @@ position = Vector2(160, 90)
 position = Vector2(160, 90)
 texture = ExtResource("12_rku1e")
 
-[node name="Geode" parent="map" instance=ExtResource("9_2vfwe")]
-position = Vector2(120, 147)
-
-[node name="Burbur" parent="map" instance=ExtResource("1_txd6a")]
-z_index = 1
-position = Vector2(252, 144)
-
 [node name="TileMap" type="TileMap" parent="map"]
 material = SubResource("ShaderMaterial_yog4a")
 tile_set = SubResource("TileSet_fkjq7")
@@ -248,8 +241,15 @@ position = Vector2(158, 170)
 scale = Vector2(1.32031, 0.078125)
 texture = ExtResource("2_igyqu")
 
+[node name="Burbur" parent="map" instance=ExtResource("1_txd6a")]
+z_index = 1
+position = Vector2(252, 144)
+
 [node name="Yooperlite2" parent="map" instance=ExtResource("8_rfjv2")]
 position = Vector2(108, 89)
+
+[node name="Geode" parent="map" instance=ExtResource("9_2vfwe")]
+position = Vector2(119, 148)
 
 [node name="Yooperlite3" parent="map" instance=ExtResource("8_rfjv2")]
 position = Vector2(257, 112)

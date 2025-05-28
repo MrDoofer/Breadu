@@ -1,3 +1,55 @@
-[gd_scene format=3 uid="uid://bq4yirxmwb0sk"]
+[gd_scene load_steps=8 format=3 uid="uid://bq4yirxmwb0sk"]
+
+[ext_resource type="Script" uid="uid://lwt3pdmbrn0x" path="res://Scripts/geode.gd" id="1_g5el4"]
+[ext_resource type="Texture2D" uid="uid://dsqu1hyc7mdc6" path="res://sprites/Geode.png" id="2_ja383"]
+[ext_resource type="Texture2D" uid="uid://bn8wosxtj2go8" path="res://sprites/e.png" id="3_ja383"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ja383"]
+radius = 3.0
+height = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxnj8"]
+atlas = ExtResource("2_ja383")
+region = Rect2(16, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14v8s"]
+atlas = ExtResource("2_ja383")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ictx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxnj8")
+}],
+"loop": true,
+"name": &"Cracked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14v8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_g5el4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = -1.5692
+shape = SubResource("CapsuleShape2D_ja383")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3ictx")
+
+[node name="E" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_ja383")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

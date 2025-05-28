@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=22 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -9,7 +9,6 @@
 [ext_resource type="Shader" uid="uid://dds2hq8phrbw8" path="res://Shaders/Water.gdshader" id="6_olox2"]
 [ext_resource type="PackedScene" uid="uid://b7eq6rqvb2ddb" path="res://Scenes/pause_menu.tscn" id="7_4ca43"]
 [ext_resource type="PackedScene" uid="uid://cw7brtmj21jau" path="res://Scenes/yooperlite.tscn" id="8_rfjv2"]
-[ext_resource type="PackedScene" uid="uid://dp1u4lb4ux123" path="res://Scenes/geode.tscn" id="9_2vfwe"]
 [ext_resource type="Shader" uid="uid://bo7sem5soor4h" path="res://Shaders/rimlight.gdshader" id="10_ldgsr"]
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
@@ -247,9 +246,6 @@ position = Vector2(252, 144)
 
 [node name="Yooperlite2" parent="map" instance=ExtResource("8_rfjv2")]
 position = Vector2(108, 89)
-
-[node name="Geode" parent="map" instance=ExtResource("9_2vfwe")]
-position = Vector2(119, 148)
 
 [node name="Yooperlite3" parent="map" instance=ExtResource("8_rfjv2")]
 position = Vector2(257, 112)

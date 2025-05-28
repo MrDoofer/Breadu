@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://cvk1i2njqmxjd" path="res://Scenes/grass.tscn" id="6_2t1ve"]
 [ext_resource type="Shader" uid="uid://dds2hq8phrbw8" path="res://Shaders/Water.gdshader" id="6_olox2"]
 [ext_resource type="PackedScene" uid="uid://b7eq6rqvb2ddb" path="res://Scenes/pause_menu.tscn" id="7_4ca43"]
-[ext_resource type="PackedScene" uid="uid://dixfxgd3g4sro" path="res://Scenes/Loaf.tscn" id="9_2vfwe"]
+[ext_resource type="PackedScene" uid="uid://cw7brtmj21jau" path="res://Scenes/yooperlite.tscn" id="8_rfjv2"]
+[ext_resource type="PackedScene" uid="uid://dixfxgd3g4sro" path="res://Scenes/geode.tscn" id="9_2vfwe"]
 [ext_resource type="Shader" uid="uid://bo7sem5soor4h" path="res://Shaders/rimlight.gdshader" id="10_ldgsr"]
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
-[ext_resource type="Texture2D" uid="uid://d2uqjy6cq1wna" path="res://sprites/logo.png" id="11_o5yvi"]
-[ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/Spritesheet.png" id="12_rku1e"]
+[ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
 
 [sub_resource type="Shader" id="Shader_1c764"]
 code = "shader_type canvas_item;
@@ -176,7 +176,7 @@ shader_parameter/grille_amount = 0.0
 shader_parameter/grille_size = 1.0
 shader_parameter/vignette_amount = 0.0
 shader_parameter/vignette_intensity = 0.0
-shader_parameter/aberation_amount = 0.5
+shader_parameter/aberation_amount = 0.0
 shader_parameter/roll_line_amount = 0.0
 shader_parameter/roll_speed = 4.429
 shader_parameter/scan_line_strength = -8.47
@@ -197,18 +197,12 @@ position = Vector2(160, 90)
 [node name="Burbur" parent="." instance=ExtResource("1_txd6a")]
 z_index = 1
 position = Vector2(252, 144)
-collision_mask = 3
 
 [node name="map" type="Node" parent="."]
 
 [node name="bg001" type="Sprite2D" parent="map"]
 position = Vector2(160, 90)
 texture = ExtResource("12_rku1e")
-
-[node name="Sprite2D" type="Sprite2D" parent="map"]
-modulate = Color(6.391, 1, 1, 1)
-position = Vector2(240, 137)
-texture = ExtResource("11_o5yvi")
 
 [node name="TileMap" type="TileMap" parent="map"]
 material = SubResource("ShaderMaterial_yog4a")
@@ -223,15 +217,6 @@ position = Vector2(37, 135)
 
 [node name="Grice" parent="map" instance=ExtResource("6_2t1ve")]
 position = Vector2(272, 135)
-
-[node name="light" type="PointLight2D" parent="map"]
-position = Vector2(174, 96)
-scale = Vector2(0.854223, 0.415704)
-color = Color(0.540444, 0.0466421, 0.606464, 1)
-energy = 3.24
-shadow_enabled = true
-shadow_color = Color(0, 0, 0, 1)
-texture = ExtResource("2_igyqu")
 
 [node name="Grass2" parent="map" instance=ExtResource("6_2t1ve")]
 position = Vector2(149, 143)
@@ -251,14 +236,23 @@ position = Vector2(203, 143)
 [node name="Grass7" parent="map" instance=ExtResource("6_2t1ve")]
 position = Vector2(68, 135)
 
-[node name="Loaf" parent="map" instance=ExtResource("9_2vfwe")]
-position = Vector2(128, 144)
+[node name="Geode" parent="map" instance=ExtResource("9_2vfwe")]
+position = Vector2(128, 147)
+
+[node name="Yooperlite" parent="map" instance=ExtResource("8_rfjv2")]
+position = Vector2(178, 105)
 
 [node name="Water" type="Sprite2D" parent="map"]
 material = SubResource("ShaderMaterial_0kuwi")
 position = Vector2(158, 170)
 scale = Vector2(1.32031, 0.078125)
 texture = ExtResource("2_igyqu")
+
+[node name="Yooperlite2" parent="map" instance=ExtResource("8_rfjv2")]
+position = Vector2(108, 89)
+
+[node name="Yooperlite3" parent="map" instance=ExtResource("8_rfjv2")]
+position = Vector2(257, 112)
 
 [node name="screen things" type="Node" parent="."]
 script = ExtResource("10_rfjv2")

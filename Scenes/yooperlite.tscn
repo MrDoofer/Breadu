@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://cw7brtmj21jau"]
+
+[ext_resource type="Texture2D" uid="uid://jobmrprei3vs" path="res://sprites/yooperlite.png" id="1_i5ubq"]
+[ext_resource type="Script" uid="uid://363cwglgxonu" path="res://Scripts/yooperlite.gd" id="2_47cck"]
+[ext_resource type="Texture2D" uid="uid://m5sfreasoygs" path="res://sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_47cck"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47cck"]
+atlas = ExtResource("1_i5ubq")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7054x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47cck")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ksyn"]
+atlas = ExtResource("1_i5ubq")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvn8l"]
+atlas = ExtResource("1_i5ubq")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekn8l"]
+atlas = ExtResource("1_i5ubq")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7noqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ksyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvn8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekn8l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7054x"]
+size = Vector2(6, 8.5)
+
+[node name="Yooperlite" type="StaticBody2D"]
+script = ExtResource("2_47cck")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7054x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D2"]
+modulate = Color(2.374, 1.677, 1, 1)
+sprite_frames = SubResource("SpriteFrames_7noqr")
+autoplay = "default"
+frame = 1
+frame_progress = 0.371599
+
+[node name="Timer" type="Timer" parent="AnimatedSprite2D2/AnimatedSprite2D"]
+wait_time = 0.14
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-4.54747e-13, -4.54747e-13)
+scale = Vector2(0.492188, 0.542969)
+energy = 1.2
+texture = ExtResource("3_47cck")
+texture_scale = 0.55
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+top_level = true
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_7054x")
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[connection signal="timeout" from="AnimatedSprite2D2/AnimatedSprite2D/Timer" to="." method="_on_timer_timeout"]

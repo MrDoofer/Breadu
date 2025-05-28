@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsqu1hyc7mdc6"
-path="res://.godot/imported/loaf.png-0526c943805c4c94c56dee5411386afd.ctex"
+path="res://.godot/imported/Geode.png-c119225440022db55bd167ad0625b5b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/loaf.png"
-dest_files=["res://.godot/imported/loaf.png-0526c943805c4c94c56dee5411386afd.ctex"]
+source_file="res://sprites/Geode.png"
+dest_files=["res://.godot/imported/Geode.png-c119225440022db55bd167ad0625b5b5.ctex"]
 
 [params]
 

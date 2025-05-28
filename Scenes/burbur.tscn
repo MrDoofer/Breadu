@@ -97,7 +97,7 @@ size = Vector2(4.32682, 3.69792)
 
 [node name="Burbur" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2, 2)
-collision_layer = 7
+collision_mask = 3
 script = ExtResource("1_m5udg")
 
 [node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
@@ -108,7 +108,7 @@ animation = &"Walking"
 autoplay = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationPlayer"]
-modulate = Color(4.136, 1.128, 0, 1)
+modulate = Color(1.88, 1.128, 0, 1)
 light_mask = 3
 visibility_layer = 3
 sprite_frames = SubResource("SpriteFrames_ht12c")

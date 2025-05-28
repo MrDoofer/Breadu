@@ -13,5 +13,5 @@ func _on_body_exited(body):
 func _process(delta):
 	if Loaf1 and Input.is_action_pressed("Interact"):
 		animated_sprite_2d.play("Cut")
-	if animated_sprite_2d.is_playing("Cut"):
+	
 		interactable =false

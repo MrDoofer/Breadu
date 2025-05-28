@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d32gkh7jhof5a"]
+[gd_scene load_steps=15 format=3 uid="uid://d32gkh7jhof5a"]
 
 [ext_resource type="Script" uid="uid://cowwamh8lf0jc" path="res://Scripts/burbur.gd" id="1_m5udg"]
 [ext_resource type="Texture2D" uid="uid://doeddnvmhmt3l" path="res://sprites/Rock.png" id="2_7n0wo"]
@@ -37,6 +37,61 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hif3v"]
+atlas = ExtResource("2_7n0wo")
+region = Rect2(24, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouoj1"]
+atlas = ExtResource("2_7n0wo")
+region = Rect2(24, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqvqe"]
+atlas = ExtResource("2_7n0wo")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht12c"]
+atlas = ExtResource("2_7n0wo")
+region = Rect2(24, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jucvq"]
+atlas = ExtResource("2_7n0wo")
+region = Rect2(24, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10jbb"]
+atlas = ExtResource("2_7n0wo")
+region = Rect2(24, 40, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ht12c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hif3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouoj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqvqe")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ht12c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jucvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10jbb")
+}],
+"loop": true,
+"name": &"eys walking",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds8ke"]
 size = Vector2(4.32682, 3.69792)
 
@@ -49,13 +104,24 @@ script = ExtResource("1_m5udg")
 position = Vector2(0, -2.5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_7n0wo")
+animation = &"Walking"
 autoplay = "default"
-frame_progress = 0.11059
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationPlayer"]
+modulate = Color(4.136, 1.128, 0, 1)
+sprite_frames = SubResource("SpriteFrames_ht12c")
+animation = &"eys walking"
+autoplay = "default"
+
+[node name="Timer" type="Timer" parent="AnimationPlayer/AnimatedSprite2D"]
+wait_time = 0.109
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_ds8ke")
 one_way_collision_margin = 0.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="timeout" from="AnimationPlayer/AnimatedSprite2D/Timer" to="." method="_on_timer_timeout"]

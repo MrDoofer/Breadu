@@ -1,15 +1,15 @@
 extends CharacterBody2D
 
-
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 var is_in_air : bool
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-@onready var eyes: AnimatedSprite2D = $eyes
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var pause_menu = $"../Camera2D/Pause Menu"
 @onready var DUST = preload("res://Scenes/dust.tscn")
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animation_player: AnimatedSprite2D = $AnimationPlayer
+
+
 var isGrounded = true
 func _physics_process(delta):
 	# Add the gravity.
@@ -32,18 +32,16 @@ func _physics_process(delta):
 	
 	# Flip the Sprite
 	if direction > 0:
-		eyes.flip_h = false
+		animation_player.flip_h = false
 	elif direction < 0:
-		eyes.flip_h = true
+		animation_player.flip_h = true
 	
 	# Play animations
 	if is_on_floor():
 		if direction == 0:
-			animated_sprite.play("Idle")
+			animation_player.play("default")
 		else:
-			animated_sprite.play("Walking")
-#else:
-		#animated_sprite.play("jump")
+			animation_player.play("Walking")
 # Apply movement
 	if direction:
 		velocity.x = direction * SPEED

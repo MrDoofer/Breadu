@@ -1,83 +1,61 @@
-[gd_scene load_steps=10 format=3 uid="uid://d32gkh7jhof5a"]
+[gd_scene load_steps=8 format=3 uid="uid://d32gkh7jhof5a"]
 
 [ext_resource type="Script" uid="uid://cowwamh8lf0jc" path="res://Scripts/burbur.gd" id="1_m5udg"]
-[ext_resource type="Texture2D" uid="uid://cat00n03vwlad" path="res://sprites/BurBur + extras.png" id="2_eyix0"]
+[ext_resource type="Texture2D" uid="uid://doeddnvmhmt3l" path="res://sprites/Rock.png" id="2_7n0wo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uhrs3"]
-atlas = ExtResource("2_eyix0")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds8ke"]
+atlas = ExtResource("2_7n0wo")
+region = Rect2(8, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_10ye2"]
-atlas = ExtResource("2_eyix0")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_iok6u"]
+atlas = ExtResource("2_7n0wo")
+region = Rect2(16, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ley3"]
-atlas = ExtResource("2_eyix0")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n0wo"]
+atlas = ExtResource("2_7n0wo")
+region = Rect2(0, 0, 8, 8)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_n1de0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7n0wo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uhrs3")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_10ye2")
+"texture": SubResource("AtlasTexture_ds8ke")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ley3")
+"texture": SubResource("AtlasTexture_iok6u")
 }],
 "loop": true,
 "name": &"Walking",
 "speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_38r7d"]
-size = Vector2(18.3334, 27.439)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nji4b"]
-atlas = ExtResource("2_eyix0")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ye18n"]
-animations = [{
+}, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nji4b")
+"texture": SubResource("AtlasTexture_7n0wo")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds8ke"]
+size = Vector2(4.32682, 3.69792)
+
 [node name="Burbur" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2, 2)
 collision_layer = 7
 script = ExtResource("1_m5udg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(2.38419e-07, -0.5)
-scale = Vector2(0.525, 0.5625)
-sprite_frames = SubResource("SpriteFrames_n1de0")
-animation = &"Idle"
-autoplay = "Idle"
+[node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2.5)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_7n0wo")
+autoplay = "default"
+frame_progress = 0.11059
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.19209e-07, -0.5)
-scale = Vector2(0.3, 0.328)
-shape = SubResource("RectangleShape2D_38r7d")
+visible = false
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_ds8ke")
+one_way_collision_margin = 0.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -0.641026)
-
-[node name="eyes" type="AnimatedSprite2D" parent="."]
-position = Vector2(9.53674e-07, -2.38419e-07)
-scale = Vector2(0.525, 0.5625)
-sprite_frames = SubResource("SpriteFrames_ye18n")
-autoplay = "default"

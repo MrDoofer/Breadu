@@ -1,31 +1,31 @@
 [gd_scene load_steps=10 format=3 uid="uid://b0ws0gjyo7pfc"]
 
-[ext_resource type="Texture2D" uid="uid://cat00n03vwlad" path="res://sprites/BurBur + extras.png" id="1_ppyd0"]
+[ext_resource type="Texture2D" uid="uid://doeddnvmhmt3l" path="res://sprites/Rock.png" id="1_ts161"]
 [ext_resource type="Script" uid="uid://cp6uxc5blfo7h" path="res://Scripts/Dust.gd" id="2_t20bb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g8cxj"]
-atlas = ExtResource("1_ppyd0")
-region = Rect2(0, 16, 48, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jme2a"]
+atlas = ExtResource("1_ts161")
+region = Rect2(0, 8, 24, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hg1ge"]
-atlas = ExtResource("1_ppyd0")
-region = Rect2(0, 32, 48, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy3h8"]
+atlas = ExtResource("1_ts161")
+region = Rect2(0, 16, 24, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1wcu6"]
-atlas = ExtResource("1_ppyd0")
-region = Rect2(0, 48, 48, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv1wt"]
+atlas = ExtResource("1_ts161")
+region = Rect2(0, 24, 24, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6c2so"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g8cxj")
+"texture": SubResource("AtlasTexture_jme2a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hg1ge")
+"texture": SubResource("AtlasTexture_sy3h8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1wcu6")
+"texture": SubResource("AtlasTexture_xv1wt")
 }],
 "loop": false,
 "name": &"default",
@@ -70,16 +70,16 @@ _data = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 modulate = Color(1, 1, 1, 0)
-scale = Vector2(0.604167, 0.5625)
 sprite_frames = SubResource("SpriteFrames_6c2so")
 autoplay = "default"
 frame = 2
 frame_progress = 1.0
+offset = Vector2(0, -4)
 script = ExtResource("2_t20bb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ywral")
+&"": SubResource("AnimationLibrary_ywral")
 }
 autoplay = "Start"
 

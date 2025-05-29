@@ -96,6 +96,7 @@ animations = [{
 size = Vector2(4.32682, 3.69792)
 
 [node name="Burbur" type="CharacterBody2D" groups=["player"]]
+top_level = true
 scale = Vector2(2, 2)
 collision_mask = 3
 script = ExtResource("1_m5udg")

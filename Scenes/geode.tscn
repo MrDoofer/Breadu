@@ -41,7 +41,7 @@ script = ExtResource("1_g5el4")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-rotation = -1.5692
+rotation = -1.5708
 shape = SubResource("CapsuleShape2D_ja383")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

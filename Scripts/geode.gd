@@ -11,15 +11,17 @@ func _ready():
 	e.position = Vector2(160, 160)
 	animated_sprite_2d.play("default")
 func _on_area_2d_body_entered(body: Node2D):
-	touched = true
-	e.show()
+	if Global.pickaxe == true:
+		touched = true
+		e.show()
 
 func _on_area_2d_body_exited(body: Node2D):
-	touched = false
-	e.hide()
+	if Global.pickaxe == true:
+		touched = false
+		e.hide()
 func _process(delta: float):
 	if touched == true:
 		e.show()
-	if touched == true and Input.is_action_just_pressed("Interact"):
+	if touched == true and Input.is_action_just_pressed("Geodes"):
 		animated_sprite_2d.play("Cracked")
 		area_2d.queue_free()

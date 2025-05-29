@@ -1,72 +1,19 @@
-[gd_scene load_steps=25 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=22 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
 [ext_resource type="Texture2D" uid="uid://m5sfreasoygs" path="res://sprites/2d_lights_and_shadows_neutral_point_light.webp" id="2_igyqu"]
 [ext_resource type="Texture2D" uid="uid://bauk05youv3so" path="res://sprites/Spritesheet.png" id="3_1yb1k"]
+[ext_resource type="PackedScene" uid="uid://dlme03jybalhe" path="res://Scenes/Pickaxe.tscn" id="4_1phco"]
 [ext_resource type="Shader" uid="uid://b37beo5nm1aw8" path="res://Shaders/crt.gdshader" id="5_xfjr0"]
 [ext_resource type="PackedScene" uid="uid://cvk1i2njqmxjd" path="res://Scenes/grass.tscn" id="6_2t1ve"]
 [ext_resource type="Shader" uid="uid://dds2hq8phrbw8" path="res://Shaders/Water.gdshader" id="6_olox2"]
 [ext_resource type="PackedScene" uid="uid://b7eq6rqvb2ddb" path="res://Scenes/pause_menu.tscn" id="7_4ca43"]
 [ext_resource type="PackedScene" uid="uid://bq4yirxmwb0sk" path="res://Scenes/geode.tscn" id="8_1phco"]
 [ext_resource type="PackedScene" uid="uid://cw7brtmj21jau" path="res://Scenes/yooperlite.tscn" id="8_rfjv2"]
-[ext_resource type="Shader" uid="uid://dxoe8wbibmjo4" path="res://Shaders/darkness.gdshader" id="10_1phco"]
 [ext_resource type="Shader" uid="uid://bo7sem5soor4h" path="res://Shaders/rimlight.gdshader" id="10_ldgsr"]
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
-
-[sub_resource type="Shader" id="Shader_1c764"]
-code = "shader_type canvas_item;
-
-uniform float first_stage : hint_range(0.0, 1.0) = 0.5; 
-uniform float first_smooth : hint_range(0.0, 1.0) = 0.0; // Lengthens the color transition
-uniform float second_stage : hint_range(0.0, 1.0) = 0.0;   // If left at 0, only level 1 is used.
-uniform float second_smooth : hint_range(0.0, 1.0) = 0.0;
-uniform float min_light : hint_range(0.0, 1.0) = 0.0;
-uniform float mid_light : hint_range(0.0, 1.0) = 0.0;
-uniform float max_light : hint_range(0.0, 1.0) = 1.0;
-uniform float obj_light_add : hint_range(0.0, 1.0) = 0.0;
-
-float light_calc(float light_strength, float would_be_strength) {
-	float target_strength = light_strength + would_be_strength * obj_light_add;
-	if (target_strength == 0.0) {target_strength = 0.000001;}
-	if (would_be_strength == 0.0) {would_be_strength = 1.0;}
-	return(target_strength / would_be_strength);
-}
-
-void light() {
-	float level_1 = first_stage;
-	float level_1_smooth = first_smooth;
-	float level_2 = second_stage;
-	float level_2_smooth = second_smooth;
-	
-	float mid_range_light = mid_light;
-	if (mid_light == 0.0) { mid_range_light = max_light * 0.5; }
-	vec3 light_normal = normalize(vec3(LIGHT_VEC, -LIGHT_HEIGHT));
-	float would_be_strength = max(dot(-light_normal, NORMAL), 0.0);
-	if (would_be_strength > level_1 && level_2 == 0.0 ) {
-		float diff = smoothstep(level_1, (level_1 + level_1_smooth), would_be_strength) + min_light;
-		if (diff >= max_light) {diff = max_light;}
-		LIGHT *= light_calc(diff, would_be_strength);
-	} else if (would_be_strength > level_1 && would_be_strength < level_2 && level_2 != 0.0 ) {
-		float diff = smoothstep(level_1, (level_1 + level_1_smooth), would_be_strength) + min_light;
-		if (diff >= mid_range_light ) {diff = mid_range_light;}
-		LIGHT *= light_calc(diff, would_be_strength);
-	} else if (would_be_strength >= level_2 && level_2 != 0.0 ) {
-		float diff = smoothstep(level_2, (level_2 + level_2_smooth), would_be_strength) + mid_range_light;
-		if (diff < mid_range_light ) {diff = mid_range_light;}
-		if (diff >= max_light) {diff = max_light;}
-		LIGHT *= light_calc(diff, would_be_strength);
-	} else { 
-		if (min_light != 0.0) { 
-			LIGHT_VEC = -NORMAL.xy*length(LIGHT_VEC); 
-		}
-		LIGHT *= min_light;                                                                                                                                  
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yog4a"]
-shader = SubResource("Shader_1c764")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cu5kx"]
 texture = ExtResource("3_1yb1k")
@@ -146,37 +93,27 @@ texture_region_size = Vector2i(8, 8)
 
 [sub_resource type="TileSet" id="TileSet_fkjq7"]
 tile_size = Vector2i(8, 8)
-physics_layer_0/collision_layer = 1
-physics_layer_1/collision_layer = 2
-physics_layer_1/collision_mask = 2
+occlusion_layer_0/light_mask = 3
+physics_layer_0/collision_layer = 9
+physics_layer_0/collision_mask = 9
+physics_layer_1/collision_layer = 10
+physics_layer_1/collision_mask = 10
 sources/2 = SubResource("TileSetAtlasSource_cu5kx")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ncfhr"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k1ss2"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1phco"]
 seamless = true
 noise = SubResource("FastNoiseLite_ncfhr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0kuwi"]
 shader = ExtResource("6_olox2")
 shader_parameter/CAST_COLOR = Color(0, 0, 0.211765, 0)
-shader_parameter/fast_noise = SubResource("NoiseTexture2D_k1ss2")
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_1phco")
 shader_parameter/speed = Vector2(0.2, 0.3)
 shader_parameter/wave_strength = 3.0
 shader_parameter/scale_y = 2.0
 shader_parameter/y_zoom = 0.3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1phco"]
-shader = ExtResource("10_1phco")
-shader_parameter/first_stage = 0.0
-shader_parameter/first_smooth = 0.38
-shader_parameter/second_stage = 0.3
-shader_parameter/second_smooth = 0.415
-shader_parameter/min_light = 0.273
-shader_parameter/mid_light = 0.23
-shader_parameter/max_light = 0.606
-shader_parameter/obj_light_add = 0.245
-shader_parameter/light_direction = Vector2(0, -1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ev06"]
 shader = ExtResource("5_xfjr0")
@@ -207,20 +144,27 @@ script = ExtResource("1_o0h88")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 90)
 
+[node name="Burbur" parent="." instance=ExtResource("1_txd6a")]
+z_index = 1
+position = Vector2(252, 144)
+
 [node name="map" type="Node" parent="."]
 
 [node name="bg001" type="Sprite2D" parent="map"]
 position = Vector2(160, 90)
 texture = ExtResource("12_rku1e")
 
+[node name="Pickaxe" parent="map" instance=ExtResource("4_1phco")]
+position = Vector2(122, 145)
+scale = Vector2(1.5, 1.5)
+
 [node name="TileMap" type="TileMap" parent="map"]
 light_mask = 2
-material = SubResource("ShaderMaterial_yog4a")
 tile_set = SubResource("TileSet_fkjq7")
 rendering_quadrant_size = 8
 format = 2
 layer_0/name = "normal"
-layer_0/tile_data = PackedInt32Array(1179648, 65538, 0, 1245184, 65538, 1, 1310720, 65538, 1, 1376256, 65538, 1, 1179649, 65538, 0, 1245185, 65538, 1, 1310721, 65538, 1, 1376257, 65538, 1, 1179650, 65538, 0, 1245186, 65538, 1, 1310722, 65538, 1, 1376258, 65538, 1, 1179651, 65538, 0, 1245187, 65538, 1, 1310723, 65538, 1, 1376259, 65538, 1, 1179652, 65538, 0, 1245188, 65538, 1, 1310724, 65538, 1, 1376260, 65538, 1, 1179653, 65538, 0, 1245189, 65538, 1, 1310725, 65538, 1, 1376261, 65538, 1, 1179654, 65538, 0, 1245190, 65538, 1, 1310726, 65538, 1, 1376262, 65538, 1, 1179655, 65538, 0, 1245191, 65538, 1, 1310727, 65538, 1, 1376263, 65538, 1, 1179656, 65538, 0, 1245192, 65538, 1, 1310728, 65538, 1, 1376264, 65538, 1, 1179657, 65538, 0, 1245193, 65538, 1, 1310729, 65538, 1, 1376265, 65538, 1, 1179658, 65538, 0, 1245194, 65538, 1, 1310730, 65538, 1, 1376266, 65538, 1, 1179659, 131074, 0, 1245195, 196610, 2, 1310731, 65538, 1, 1376267, 65538, 1, 1245196, 65538, 0, 1310732, 65538, 1, 1376268, 65538, 1, 1245197, 65538, 0, 1310733, 65538, 1, 1376269, 65538, 1, 1245198, 65538, 0, 1310734, 65538, 1, 1376270, 65538, 1, 1245199, 65538, 0, 1310735, 65538, 1, 1376271, 65538, 1, 1245200, 65538, 0, 1310736, 65538, 1, 1376272, 65538, 1, 1245201, 65538, 0, 1310737, 65538, 1, 1376273, 65538, 1, 1245202, 65538, 0, 1310738, 65538, 1, 1376274, 65538, 1, 1245203, 65538, 0, 1310739, 65538, 1, 1376275, 65538, 1, 1245204, 65538, 0, 1310740, 65538, 1, 1376276, 65538, 1, 1245205, 65538, 0, 1310741, 65538, 1, 1376277, 65538, 1, 1245206, 65538, 0, 1310742, 65538, 1, 1376278, 65538, 1, 1245207, 65538, 0, 1310743, 65538, 1, 1376279, 65538, 1, 1245208, 65538, 0, 1310744, 65538, 1, 1376280, 65538, 1, 1245209, 65538, 0, 1310745, 65538, 1, 1376281, 65538, 1, 1245210, 65538, 0, 1310746, 65538, 1, 1376282, 65538, 1, 1245211, 65538, 0, 1310747, 65538, 1, 1376283, 65538, 1, 1245212, 65538, 0, 1310748, 65538, 1, 1376284, 65538, 1, 1245213, 65538, 0, 1310749, 65538, 1, 1376285, 65538, 1, 1245214, 65538, 0, 1310750, 65538, 1, 1376286, 65538, 1, 1179679, 2, 0, 1245215, 327682, 2, 1310751, 65538, 1, 1376287, 65538, 1, 1179680, 65538, 0, 1245216, 65538, 1, 1310752, 65538, 1, 1376288, 65538, 1, 1179681, 65538, 0, 1245217, 65538, 1, 1310753, 65538, 1, 1376289, 65538, 1, 1179682, 65538, 0, 1245218, 65538, 1, 1310754, 65538, 1, 1376290, 65538, 1, 1179683, 65538, 0, 1245219, 65538, 1, 1310755, 65538, 1, 1376291, 65538, 1, 1179684, 65538, 0, 1245220, 65538, 1, 1310756, 65538, 1, 1376292, 65538, 1, 1179685, 65538, 0, 1245221, 65538, 1, 1310757, 65538, 1, 1376293, 65538, 1, 1179686, 65538, 0, 1245222, 65538, 1, 1310758, 65538, 1, 1376294, 65538, 1, 1179687, 65538, 0, 1245223, 65538, 1, 1310759, 65538, 1, 1376295, 65538, 1)
+layer_0/tile_data = PackedInt32Array(1179648, 65538, 0, 1245184, 65538, 1, 1310720, 65538, 1, 1376256, 65538, 1, 1179649, 65538, 0, 1245185, 65538, 1, 1310721, 65538, 1, 1376257, 65538, 1, 1179650, 65538, 0, 1245186, 65538, 1, 1310722, 65538, 1, 1376258, 65538, 1, 1179651, 65538, 0, 1245187, 65538, 1, 1310723, 65538, 1, 1376259, 65538, 1, 1179652, 65538, 0, 1245188, 65538, 1, 1310724, 65538, 1, 1376260, 65538, 1, 1179653, 65538, 0, 1245189, 65538, 1, 1310725, 65538, 1, 1376261, 65538, 1, 1179654, 65538, 0, 1245190, 65538, 1, 1310726, 65538, 1, 1376262, 65538, 1, 1179655, 65538, 0, 1245191, 65538, 1, 1310727, 65538, 1, 1376263, 65538, 1, 1179656, 65538, 0, 1245192, 65538, 1, 1310728, 65538, 1, 1376264, 65538, 1, 1179657, 65538, 0, 1245193, 65538, 1, 1310729, 65538, 1, 1376265, 65538, 1, 1179658, 65538, 0, 1245194, 65538, 1, 1310730, 65538, 1, 1376266, 65538, 1, 1179659, 131074, 0, 1245195, 196610, 2, 1310731, 65538, 1, 1376267, 65538, 1, 1245196, 65538, 0, 1310732, 65538, 1, 1376268, 65538, 1, 1245197, 65538, 0, 1310733, 65538, 1, 1376269, 65538, 1, 1245198, 65538, 0, 1310734, 65538, 1, 1376270, 65538, 1, 1245199, 65538, 0, 1310735, 65538, 1, 1376271, 65538, 1, 1245200, 65538, 0, 1310736, 65538, 1, 1376272, 65538, 1, 1245201, 65538, 0, 1310737, 65538, 1, 1376273, 65538, 1, 1245202, 65538, 0, 1310738, 65538, 1, 1376274, 65538, 1, 1245203, 65538, 0, 1310739, 65538, 1, 1376275, 65538, 1, 1245204, 65538, 0, 1310740, 65538, 1, 1376276, 65538, 1, 1245205, 65538, 0, 1310741, 65538, 1, 1376277, 65538, 1, 1245206, 65538, 0, 1310742, 65538, 1, 1376278, 65538, 1, 1245207, 65538, 0, 1310743, 65538, 1, 1376279, 65538, 1, 1245208, 65538, 0, 1310744, 65538, 1, 1376280, 65538, 1, 1245209, 65538, 0, 1310745, 65538, 1, 1376281, 65538, 1, 1245210, 65538, 0, 1310746, 65538, 1, 1376282, 65538, 1, 1245211, 65538, 0, 1310747, 65538, 1, 1376283, 65538, 1, 1245212, 65538, 0, 1310748, 65538, 1, 1376284, 65538, 1, 1245213, 65538, 0, 1310749, 65538, 1, 1376285, 65538, 1, 1245214, 65538, 0, 1310750, 65538, 1, 1376286, 65538, 1, 1179679, 2, 0, 1245215, 327682, 2, 1310751, 65538, 1, 1376287, 65538, 1, 1179680, 65538, 0, 1245216, 65538, 1, 1310752, 65538, 1, 1376288, 65538, 1, 1179681, 65538, 0, 1245217, 65538, 1, 1310753, 65538, 1, 1376289, 65538, 1, 1179682, 65538, 0, 1245218, 65538, 1, 1310754, 65538, 1, 1376290, 65538, 1, 1179683, 65538, 0, 1245219, 65538, 1, 1310755, 65538, 1, 1376291, 65538, 1, 1179684, 65538, 0, 1245220, 65538, 1, 1310756, 65538, 1, 1376292, 65538, 1, 1179685, 65538, 0, 1245221, 65538, 1, 1310757, 65538, 1, 1376293, 65538, 1, 1179686, 65538, 0, 1245222, 65538, 1, 1310758, 65538, 1, 1376294, 65538, 1, 1179687, 65538, 0, 1245223, 65538, 1, 1310759, 65538, 1, 1376295, 65538, 1, 458782, 196610, 2, 458783, 262146, 2, 458784, 262146, 2, 458785, 262146, 2, 458786, 327682, 0, 524322, 2, 1, 589858, 2, 1, 655394, 196610, 2, 458787, 262146, 1, 524323, 262146, 1, 589859, 262146, 1, 655395, 262146, 2, 458788, 262146, 1, 524324, 262146, 1, 589860, 262146, 1, 655396, 262146, 2, 458789, 262146, 1, 524325, 262146, 1, 589861, 262146, 1, 655397, 262146, 2, 458790, 262146, 1, 524326, 262146, 1, 589862, 262146, 1, 655398, 262146, 2, 458791, 262146, 1, 524327, 262146, 1, 589863, 262146, 1, 655399, 262146, 2, 393246, 2, 0, 327711, 2, 0, 327712, 65538, 0, 393248, 262146, 1, 327713, 65538, 0, 393249, 262146, 1, 327714, 65538, 0, 393250, 262146, 1, 327715, 65538, 0, 393251, 262146, 1, 327716, 65538, 0, 393252, 262146, 1, 327717, 65538, 0, 393253, 262146, 1, 327718, 65538, 0, 393254, 262146, 1, 327719, 65538, 0, 393255, 262146, 1, 393247, 327682, 2)
 
 [node name="Grass" parent="map" instance=ExtResource("6_2t1ve")]
 position = Vector2(37, 135)
@@ -249,18 +193,17 @@ position = Vector2(68, 135)
 [node name="Yooperlite" parent="map" instance=ExtResource("8_rfjv2")]
 position = Vector2(216, 105)
 
-[node name="Water" type="Sprite2D" parent="map"]
-material = SubResource("ShaderMaterial_0kuwi")
-position = Vector2(158, 170)
-scale = Vector2(1.32031, 0.078125)
-texture = ExtResource("2_igyqu")
-
 [node name="Node2D" parent="map" instance=ExtResource("8_1phco")]
 position = Vector2(285, 140)
 
-[node name="Burbur" parent="map" instance=ExtResource("1_txd6a")]
+[node name="Water" type="Sprite2D" parent="map"]
+light_mask = 3
+visibility_layer = 3
 z_index = 1
-position = Vector2(252, 144)
+material = SubResource("ShaderMaterial_0kuwi")
+position = Vector2(160, 170)
+scale = Vector2(1.3, 0.077)
+texture = ExtResource("2_igyqu")
 
 [node name="Yooperlite2" parent="map" instance=ExtResource("8_rfjv2")]
 position = Vector2(215, 81)
@@ -269,12 +212,8 @@ position = Vector2(215, 81)
 position = Vector2(256, 119)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="map"]
-visibility_layer = 2
-material = SubResource("ShaderMaterial_1phco")
-energy = 1.02
+energy = 0.77
 blend_mode = 1
-range_item_cull_mask = 2
-height = 0.12
 
 [node name="screen things" type="Node" parent="."]
 script = ExtResource("10_rfjv2")

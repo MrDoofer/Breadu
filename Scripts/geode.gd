@@ -11,12 +11,12 @@ func _ready():
 	e.position = Vector2(160, 160)
 	animated_sprite_2d.play("default")
 func _on_area_2d_body_entered(body: Node2D):
-	if Global.pickaxe == true:
+	if Game.pickaxe == true:
 		touched = true
 		e.show()
 
 func _on_area_2d_body_exited(body: Node2D):
-	if Global.pickaxe == true:
+	if Game.pickaxe == true:
 		touched = false
 		e.hide()
 func _process(delta: float):

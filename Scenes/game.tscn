@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=25 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b7eq6rqvb2ddb" path="res://Scenes/pause_menu.tscn" id="7_4ca43"]
 [ext_resource type="PackedScene" uid="uid://bq4yirxmwb0sk" path="res://Scenes/geode.tscn" id="8_1phco"]
 [ext_resource type="PackedScene" uid="uid://cw7brtmj21jau" path="res://Scenes/yooperlite.tscn" id="8_rfjv2"]
+[ext_resource type="Shader" uid="uid://dxoe8wbibmjo4" path="res://Shaders/darkness.gdshader" id="10_1phco"]
 [ext_resource type="Shader" uid="uid://bo7sem5soor4h" path="res://Shaders/rimlight.gdshader" id="10_ldgsr"]
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
@@ -165,6 +166,18 @@ shader_parameter/wave_strength = 3.0
 shader_parameter/scale_y = 2.0
 shader_parameter/y_zoom = 0.3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1phco"]
+shader = ExtResource("10_1phco")
+shader_parameter/first_stage = 0.0
+shader_parameter/first_smooth = 0.38
+shader_parameter/second_stage = 0.3
+shader_parameter/second_smooth = 0.415
+shader_parameter/min_light = 0.273
+shader_parameter/mid_light = 0.23
+shader_parameter/max_light = 0.606
+shader_parameter/obj_light_add = 0.245
+shader_parameter/light_direction = Vector2(0, -1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ev06"]
 shader = ExtResource("5_xfjr0")
 shader_parameter/resolution = Vector2(320, 180)
@@ -201,6 +214,7 @@ position = Vector2(160, 90)
 texture = ExtResource("12_rku1e")
 
 [node name="TileMap" type="TileMap" parent="map"]
+light_mask = 2
 material = SubResource("ShaderMaterial_yog4a")
 tile_set = SubResource("TileSet_fkjq7")
 rendering_quadrant_size = 8
@@ -233,7 +247,7 @@ position = Vector2(203, 143)
 position = Vector2(68, 135)
 
 [node name="Yooperlite" parent="map" instance=ExtResource("8_rfjv2")]
-position = Vector2(178, 105)
+position = Vector2(216, 105)
 
 [node name="Water" type="Sprite2D" parent="map"]
 material = SubResource("ShaderMaterial_0kuwi")
@@ -249,10 +263,18 @@ z_index = 1
 position = Vector2(252, 144)
 
 [node name="Yooperlite2" parent="map" instance=ExtResource("8_rfjv2")]
-position = Vector2(108, 89)
+position = Vector2(215, 81)
 
 [node name="Yooperlite3" parent="map" instance=ExtResource("8_rfjv2")]
-position = Vector2(257, 112)
+position = Vector2(256, 119)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="map"]
+visibility_layer = 2
+material = SubResource("ShaderMaterial_1phco")
+energy = 1.02
+blend_mode = 1
+range_item_cull_mask = 2
+height = 0.12
 
 [node name="screen things" type="Node" parent="."]
 script = ExtResource("10_rfjv2")

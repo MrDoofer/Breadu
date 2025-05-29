@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cw7brtmj21jau"]
+[gd_scene load_steps=12 format=3 uid="uid://cw7brtmj21jau"]
 
 [ext_resource type="Texture2D" uid="uid://jobmrprei3vs" path="res://sprites/yooperlite.png" id="1_i5ubq"]
 [ext_resource type="Script" uid="uid://363cwglgxonu" path="res://Scripts/yooperlite.gd" id="2_47cck"]
 [ext_resource type="Texture2D" uid="uid://m5sfreasoygs" path="res://sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_47cck"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_47cck"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47cck"]
 atlas = ExtResource("1_i5ubq")
@@ -51,7 +53,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7054x"]
 size = Vector2(6, 8.5)
 
-[node name="Yooperlite" type="StaticBody2D"]
+[node name="Yooperlite" type="AnimatableBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_47cck")
 script = ExtResource("2_47cck")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
@@ -67,18 +70,17 @@ frame_progress = 0.371599
 [node name="Timer" type="Timer" parent="AnimatedSprite2D2/AnimatedSprite2D"]
 wait_time = 0.14
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+top_level = true
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_7054x")
+one_way_collision = true
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-4.54747e-13, -4.54747e-13)
 scale = Vector2(0.492188, 0.542969)
 energy = 1.2
 texture = ExtResource("3_47cck")
 texture_scale = 0.55
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-top_level = true
-position = Vector2(0, -0.25)
-shape = SubResource("RectangleShape2D_7054x")
-one_way_collision = true
-one_way_collision_margin = 0.0
 
 [connection signal="timeout" from="AnimatedSprite2D2/AnimatedSprite2D/Timer" to="." method="_on_timer_timeout"]

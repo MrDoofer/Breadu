@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://d2uqjy6cq1wna" path="res://sprites/logo.png" id="11_nb51f"]
 [ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
-[ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://Pick.png" id="15_nnt18"]
+[ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://sprites/Pick.png" id="15_nnt18"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cu5kx"]
 texture = ExtResource("3_1yb1k")
@@ -222,6 +222,10 @@ modulate = Color(13.158, 10.15, 13.91, 1)
 position = Vector2(89, 133)
 texture = ExtResource("11_nb51f")
 
+[node name="Pick" type="Sprite2D" parent="map"]
+position = Vector2(56, 86)
+texture = ExtResource("15_nnt18")
+
 [node name="screen things" type="Node" parent="."]
 script = ExtResource("10_rfjv2")
 
@@ -259,10 +263,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(77.348, 56.906, 0, 0)
-
-[node name="Pick" type="Sprite2D" parent="screen things/CanvasLayer/Control"]
-position = Vector2(56, 86)
-texture = ExtResource("15_nnt18")
 
 [node name="Pause Menu" parent="screen things" instance=ExtResource("7_4ca43")]
 visible = false

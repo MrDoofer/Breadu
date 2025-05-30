@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=22 format=3 uid="uid://8013psc2yag6"]
 
+[ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
 [ext_resource type="Texture2D" uid="uid://m5sfreasoygs" path="res://sprites/2d_lights_and_shadows_neutral_point_light.webp" id="2_igyqu"]
 [ext_resource type="Texture2D" uid="uid://bauk05youv3so" path="res://sprites/Spritesheet.png" id="3_1yb1k"]
@@ -138,13 +139,14 @@ shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_o0h88")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
 
 [node name="Burbur" parent="." instance=ExtResource("1_txd6a")]
 z_index = 1
 position = Vector2(252, 144)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(160, 90)
 
 [node name="map" type="Node" parent="."]
 

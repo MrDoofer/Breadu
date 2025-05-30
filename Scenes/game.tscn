@@ -145,6 +145,10 @@ script = ExtResource("1_o0h88")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 90)
 
+[node name="Burbur" parent="." instance=ExtResource("1_txd6a")]
+z_index = 1
+position = Vector2(252, 144)
+
 [node name="map" type="Node" parent="."]
 
 [node name="bg001" type="Sprite2D" parent="map"]
@@ -152,13 +156,9 @@ position = Vector2(160, 90)
 texture = ExtResource("12_rku1e")
 
 [node name="Pick" type="Sprite2D" parent="map"]
-modulate = Color(1, 1.128, 4.887, 1)
+modulate = Color(1, 1.128, 3, 1)
 position = Vector2(56, 86)
 texture = ExtResource("15_nnt18")
-
-[node name="Burbur" parent="map" instance=ExtResource("1_txd6a")]
-z_index = 1
-position = Vector2(252, 144)
 
 [node name="Pickaxe" parent="map" instance=ExtResource("4_1phco")]
 position = Vector2(122, 145)

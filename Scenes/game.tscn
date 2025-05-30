@@ -156,9 +156,17 @@ position = Vector2(160, 90)
 texture = ExtResource("12_rku1e")
 
 [node name="Pick" type="Sprite2D" parent="map"]
-modulate = Color(1, 1.128, 3, 1)
+modulate = Color(1, 1.128, 2.632, 1)
 position = Vector2(56, 86)
 texture = ExtResource("15_nnt18")
+
+[node name="PointLight2D" type="PointLight2D" parent="map/Pick"]
+position = Vector2(-5, -9.25)
+scale = Vector2(1.00781, 0.814453)
+energy = 0.71
+texture = ExtResource("2_igyqu")
+texture_scale = 0.58
+height = 15.0
 
 [node name="Pickaxe" parent="map" instance=ExtResource("4_1phco")]
 position = Vector2(122, 145)

@@ -1,6 +1,6 @@
 extends Sprite2D
 var touchable = false
-@onready var pickaxe: Sprite2D = $"."
+var pickedup =false
 @onready var item_popup: Sprite2D = $CanvasLayer/ItemPopup
 @onready var animatable_body_2d: AnimatableBody2D = $AnimatableBody2D
 @onready var burbur: CharacterBody2D = $"../../Burbur"
@@ -11,21 +11,24 @@ func _ready():
 	item_popup.hide()
 	item_popup.position = Vector2(160,160)
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == burbur:
+	if body == burbur and pickedup == false:
 		touchable = true
 		item_popup.show()
 		animatable_body_2d.show()
-	else:
+	elif pickedup == false:
 		animatable_body_2d.hide()
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body == burbur:
+	if body == burbur and pickedup == false:
 		touchable = false
 		item_popup.hide()
 		animatable_body_2d.hide()
-	else:
+	elif pickedup == false:
 		animatable_body_2d.show()
 
 func _process(delta: float):
 	if touchable==true and Input.is_action_just_pressed("Items"):
-		self.queue_free()
+		pickedup = true
+		self.hide()
+		for Node in get_children():
+			Node.hide()
 		Global.pickaxeinhand =true

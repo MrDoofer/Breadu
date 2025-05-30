@@ -4,16 +4,34 @@ var pickedup =false
 @onready var item_popup: Sprite2D = $CanvasLayer/ItemPopup
 @onready var animatable_body_2d: AnimatableBody2D = $AnimatableBody2D
 @onready var burbur: CharacterBody2D = $"../../Burbur"
-func _show_all(node):
-	node.show()
-	for child in node.get_children():
-		if child is Node:
-			_show_all(child)
 func _hide_all(node):
-	node.hide()
+	if node is CanvasItem:
+		node.visible = false
+	elif node.has_method("hide"): # fallback
+		node.hide()
+
+	# Disable collisions if applicable
+	if node is CollisionObject2D:
+		node.set_deferred("disabled", true)
+	elif node is CollisionShape2D:
+		node.set_deferred("disabled", true)
+
 	for child in node.get_children():
-		if child is Node:
-			_hide_all(child)
+		_hide_all(child)
+func _show_all(node):
+	if node is CanvasItem:
+		node.visible = true
+	elif node.has_method("show"):
+		node.show()
+
+	# Re-enable collisions if applicable
+	if node is CollisionObject2D:
+		node.set_deferred("disabled", false)
+	elif node is CollisionShape2D:
+		node.set_deferred("disabled", false)
+
+	for child in node.get_children():
+		_show_all(child)
 func _ready():
 	await get_tree().process_frame
 	animatable_body_2d.hide()
@@ -41,7 +59,7 @@ func _process(delta: float):
 			Global.pickaxeinhand = true
 		elif pickedup:
 			pickedup = false
+			_show_all(self)
 			self.position = burbur.position + Vector2(4, -8)
 			item_popup.position = Vector2(160, 160)
-			_show_all(self)
 			Global.pickaxeinhand = false

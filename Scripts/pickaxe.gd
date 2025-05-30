@@ -29,6 +29,4 @@ func _process(delta: float):
 	if touchable==true and Input.is_action_just_pressed("Items"):
 		pickedup = true
 		self.hide()
-		for Node in get_children():
-			Node.hide()
 		Global.pickaxeinhand =true

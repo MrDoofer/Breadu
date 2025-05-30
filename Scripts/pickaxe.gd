@@ -26,7 +26,13 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		animatable_body_2d.show()
 
 func _process(delta: float):
-	if touchable==true and Input.is_action_just_pressed("Items"):
+	if touchable and Input.is_action_just_pressed("Items"):
 		pickedup = true
-		self.hide()
-		Global.pickaxeinhand =true
+		_hide_all(self)
+		Global.pickaxeinhand = true
+
+func _hide_all(node):
+	node.hide()
+	for child in node.get_children():
+		if child is Node:
+			_hide_all(child)

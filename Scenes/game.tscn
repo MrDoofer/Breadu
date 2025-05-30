@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=23 format=3 uid="uid://8013psc2yag6"]
 
+[ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
 [ext_resource type="Texture2D" uid="uid://m5sfreasoygs" path="res://sprites/2d_lights_and_shadows_neutral_point_light.webp" id="2_igyqu"]
 [ext_resource type="Texture2D" uid="uid://bauk05youv3so" path="res://sprites/Spritesheet.png" id="3_1yb1k"]
-[ext_resource type="PackedScene" uid="uid://c5g0606oa43k1" path="res://Scenes/Pickaxe.tscn" id="4_1phco"]
+[ext_resource type="PackedScene" uid="uid://dlme03jybalhe" path="res://Scenes/Pickaxe.tscn" id="4_1phco"]
 [ext_resource type="Shader" uid="uid://b37beo5nm1aw8" path="res://Shaders/crt.gdshader" id="5_xfjr0"]
 [ext_resource type="PackedScene" uid="uid://cvk1i2njqmxjd" path="res://Scenes/grass.tscn" id="6_2t1ve"]
 [ext_resource type="Shader" uid="uid://dds2hq8phrbw8" path="res://Shaders/Water.gdshader" id="6_olox2"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cw7brtmj21jau" path="res://Scenes/yooperlite.tscn" id="8_rfjv2"]
 [ext_resource type="Shader" uid="uid://bo7sem5soor4h" path="res://Shaders/rimlight.gdshader" id="10_ldgsr"]
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
+[ext_resource type="Texture2D" uid="uid://d2uqjy6cq1wna" path="res://sprites/logo.png" id="11_nb51f"]
 [ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cu5kx"]
@@ -138,6 +140,7 @@ shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_o0h88")
 
 [node name="Burbur" parent="." instance=ExtResource("1_txd6a")]
 z_index = 1
@@ -212,6 +215,11 @@ position = Vector2(256, 119)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="map"]
 energy = 0.77
 blend_mode = 1
+
+[node name="Logo" type="Sprite2D" parent="map"]
+modulate = Color(13.158, 10.15, 13.91, 1)
+position = Vector2(89, 133)
+texture = ExtResource("11_nb51f")
 
 [node name="screen things" type="Node" parent="."]
 script = ExtResource("10_rfjv2")

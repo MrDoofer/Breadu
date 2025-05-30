@@ -1,2 +1,3 @@
 extends Node2D
-var pickaxe = false
+@onready var burbur: CharacterBody2D = $Burbur
+var pickaxeinhand = false

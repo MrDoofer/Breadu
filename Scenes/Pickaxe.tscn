@@ -15,19 +15,23 @@ region_rect = Rect2(0, 0, 8.01372, 8)
 script = ExtResource("2_l6hle")
 
 [node name="Area2D" type="Area2D" parent="."]
-gravity_space_override = 1
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/AnimatableBody2D"]
+position = Vector2(-1.41421, -1.41421)
+rotation = -0.785398
+shape = SubResource("RectangleShape2D_hfcf5")
+one_way_collision = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1.41421, -1.41421)
 rotation = -0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hfcf5")
-one_way_collision = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ItemPopup" type="Sprite2D" parent="CanvasLayer"]
-scale = Vector2(1, 1)
 texture = ExtResource("3_hfcf5")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

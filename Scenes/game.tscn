@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=24 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://d2uqjy6cq1wna" path="res://sprites/logo.png" id="11_nb51f"]
 [ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
+[ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://Pick.png" id="15_nnt18"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cu5kx"]
 texture = ExtResource("3_1yb1k")
@@ -248,6 +249,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Glowy stuff" type="ColorRect" parent="screen things/CanvasLayer/Control"]
+self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_o5yvi")
 layout_mode = 1
 anchors_preset = 15
@@ -256,6 +258,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(77.348, 56.906, 0, 0)
+
+[node name="Pick" type="Sprite2D" parent="screen things/CanvasLayer/Control"]
+position = Vector2(56, 86)
+texture = ExtResource("15_nnt18")
 
 [node name="Pause Menu" parent="screen things" instance=ExtResource("7_4ca43")]
 visible = false

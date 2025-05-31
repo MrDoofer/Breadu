@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=25 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -15,6 +15,10 @@
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
 [ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://sprites/Pick.png" id="15_nnt18"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nb51f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnt18"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cu5kx"]
 texture = ExtResource("3_1yb1k")
@@ -95,10 +99,10 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_fkjq7"]
 tile_size = Vector2i(8, 8)
 occlusion_layer_0/light_mask = 3
-physics_layer_0/collision_layer = 9
-physics_layer_0/collision_mask = 9
-physics_layer_1/collision_layer = 10
-physics_layer_1/collision_mask = 10
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_nb51f")
+physics_layer_1/collision_layer = 1
+physics_layer_1/physics_material = SubResource("PhysicsMaterial_nnt18")
 sources/2 = SubResource("TileSetAtlasSource_cu5kx")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ncfhr"]
@@ -169,7 +173,7 @@ texture_scale = 0.58
 height = 15.0
 
 [node name="Pickaxe" parent="map" instance=ExtResource("4_1phco")]
-position = Vector2(122, 145)
+position = Vector2(122, 144)
 scale = Vector2(1.5, 1.5)
 
 [node name="TileMap" type="TileMap" parent="map"]

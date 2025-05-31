@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvk1i2njqmxjd"]
+[gd_scene load_steps=21 format=3 uid="uid://cvk1i2njqmxjd"]
 
 [ext_resource type="Script" uid="uid://qffraj7ef4r8" path="res://Scripts/grass.gd" id="1_jwwo6"]
 [ext_resource type="Texture2D" uid="uid://bauk05youv3so" path="res://sprites/Spritesheet.png" id="2_7bt0i"]
@@ -26,10 +26,6 @@ region = Rect2(64, 0, 16, 16)
 atlas = ExtResource("2_7bt0i")
 region = Rect2(64, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx6eb"]
-atlas = ExtResource("2_7bt0i")
-region = Rect2(96, 16, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e5v4"]
 atlas = ExtResource("2_7bt0i")
 region = Rect2(64, 0, 16, 16)
@@ -51,18 +47,18 @@ animations = [{
 }],
 "loop": false,
 "name": &"Released",
-"speed": 9.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8hi6q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fx6eb")
+"texture": null
 }],
 "loop": false,
 "name": &"Stepped on",
-"speed": 8.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -132,7 +128,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Released",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -143,7 +139,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Stepped On",
-"speed": 8.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -161,6 +157,7 @@ size = Vector2(5, 3)
 
 [node name="G1" type="Area2D" parent="."]
 position = Vector2(-1, 0)
+collision_mask = 5
 script = ExtResource("1_jwwo6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="G1"]
@@ -170,10 +167,12 @@ shape = SubResource("RectangleShape2D_ccvh5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="G1"]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_kvs45")
+animation = &"Released"
 autoplay = "default"
 
 [node name="G2" type="Area2D" parent="."]
 position = Vector2(-1, 0)
+collision_mask = 5
 script = SubResource("GDScript_6s8e4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="G2"]
@@ -181,8 +180,6 @@ position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_a0eg2")
 animation = &"Released"
 autoplay = "default"
-frame = 3
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="G2"]
 position = Vector2(4.5, 6.5)

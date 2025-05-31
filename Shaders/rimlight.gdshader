@@ -1,58 +1,121 @@
 shader_type canvas_item;
 
-uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap_anisotropic, repeat_disable;
-uniform float hpass : hint_range(0.0, 1.0, 0.1) = 1.0;
-uniform float vpass : hint_range(0.0, 1.0, 0.1) = 1.0;
-uniform int radius : hint_range(0, 65, 1) = 65;
-render_mode blend_add;
+// === TEXTURE INPUTS ===
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
 
-vec4 textureThresholded(sampler2D _texture, vec2 _uv, float _bias) {
-	vec4 pixel = textureLod(_texture, _uv, _bias);
-	
-	if ( pixel.r <= 1. && pixel.g <= 1. && pixel.b <= 1. ) {
-		pixel.rgb = vec3(0.);
-	}
-	
-	return pixel; 
+// === RESOLUTION ===
+uniform vec2 resolution = vec2(320.0, 180.0);
+
+// === CRT FX ===
+uniform float scan_line_amount = 1.0;
+uniform float warp_amount = 0.025;
+uniform float noise_amount = 0.01;
+uniform float interference_amount = 0.05;
+uniform float grille_amount = 0.025;
+uniform float grille_size = 1.0;
+uniform float vignette_amount = 0.3;
+uniform float vignette_intensity = 0.65;
+uniform float aberation_amount = 0.03;
+uniform float roll_line_amount = 0.1;
+uniform float roll_speed = 0.5;
+uniform float scan_line_strength = -4.0;
+uniform float pixel_strength = -1.5;
+
+float random(vec2 uv) {
+    return fract(cos(uv.x * 83.4827 + uv.y * 92.2842) * 43758.5453123);
+}
+
+vec3 fetch_pixel(vec2 uv, vec2 off) {
+    vec2 pos = floor(uv * resolution + off) / resolution + vec2(0.5) / resolution;
+    float noise = noise_amount > 0.0 ? random(pos + fract(TIME)) * noise_amount : 0.0;
+    if (max(abs(pos.x - 0.5), abs(pos.y - 0.5)) > 0.5) return vec3(0.0);
+    return texture(SCREEN_TEXTURE, pos, -16.0).rgb + noise;
+}
+
+vec2 Dist(vec2 pos) {
+    pos *= resolution;
+    return -((pos - floor(pos)) - vec2(0.5));
+}
+
+float Gaus(float pos, float scale) {
+    return exp2(scale * pos * pos);
+}
+
+vec3 Horz3(vec2 pos, float off) {
+    vec3 b = fetch_pixel(pos, vec2(-1.0, off));
+    vec3 c = fetch_pixel(pos, vec2( 0.0, off));
+    vec3 d = fetch_pixel(pos, vec2( 1.0, off));
+    float dst = Dist(pos).x;
+    float wb = Gaus(dst - 1.0, pixel_strength);
+    float wc = Gaus(dst, pixel_strength);
+    float wd = Gaus(dst + 1.0, pixel_strength);
+    return (b * wb + c * wc + d * wd) / (wb + wc + wd);
+}
+
+float Scan(vec2 pos, float off) {
+    float dst = Dist(pos).y;
+    return Gaus(dst + off, scan_line_strength);
+}
+
+vec3 Tri(vec2 pos) {
+    vec3 clr = fetch_pixel(pos, vec2(0.0));
+    if (scan_line_amount > 0.0) {
+        vec3 a = Horz3(pos, -1.0);
+        vec3 b = Horz3(pos,  0.0);
+        vec3 c = Horz3(pos,  1.0);
+        float wa = Scan(pos, -1.0);
+        float wb = Scan(pos,  0.0);
+        float wc = Scan(pos,  1.0);
+        clr = mix(clr, a * wa + b * wb + c * wc, scan_line_amount);
+    }
+    return clr;
+}
+
+vec2 warp(vec2 uv) {
+    vec2 delta = uv - 0.5;
+    float delta2 = dot(delta, delta);
+    float delta4 = delta2 * delta2;
+    return (uv + delta * (delta4 * warp_amount) - 0.5) / mix(1.0, 1.2, warp_amount / 5.0) + 0.5;
+}
+
+float vignette(vec2 uv) {
+    uv *= 1.0 - uv;
+    return pow(uv.x * uv.y * 15.0, vignette_intensity * vignette_amount);
+}
+
+vec3 grille(vec2 uv) {
+    float unit = PI / 3.0;
+    float scale = 2.0 * unit / grille_size;
+    float r = smoothstep(0.5, 0.8, cos(uv.x * scale - unit));
+    float g = smoothstep(0.5, 0.8, cos(uv.x * scale + unit));
+    float b = smoothstep(0.5, 0.8, cos(uv.x * scale + 3.0 * unit));
+    return mix(vec3(1.0), vec3(r, g, b), grille_amount);
+}
+
+float roll_line(vec2 uv) {
+    float x = uv.y * 3.0 - TIME * roll_speed;
+    float f = cos(x) * cos(x * 2.35 + 1.1) * cos(x * 4.45 + 2.3);
+    return smoothstep(0.5, 0.9, f) * roll_line_amount;
 }
 
 void fragment() {
-	vec4 pixel = textureThresholded(screen_texture, SCREEN_UV, 0.);
-	
-	if (radius != 0) {
-		
-		vec4 blurred = vec4(0., 0., 0., 1.);
-		float[65] w = {0.0064, 0.0063, 0.0062, 0.0061, 0.006,
-			0.0059, 0.0058, 0.0057, 0.0056, 0.0055, 0.0054, 0.0053, 0.0052, 0.0051, 0.005, 0.0049, 0.0048, 0.0047, 0.0046, 0.0054, 0.0044, 0.0043, 0.0042, 0.0041, 0.004, 0.0039, 0.0038, 0.0037, 0.0036, 0.0043, 0.0034, 0.0033, 0.0032, 0.0031, 0.003, 0.0029, 0.0028, 0.0027, 0.0026, 0.0052, 0.0024, 0.0023, 0.0022, 0.0021, 0.002, 0.0019, 0.0018, 0.0017, 0.0016, 0.0051, 0.0014, 0.0013, 0.0012, 0.0011, 0.001, 0.0009, 0.0008, 0.0007, 0.0006, 0.0005, 0.0004, 0.0003, 0.0002, 0.0001, 0.};
-		
-		float px = 1. / float(textureSize(screen_texture, 0).x);
-		float py = 1. / float(textureSize(screen_texture, 0).y);
-		
-		for(int i = 0; i < radius; i++) {
-			float k = float(i + 1);
-			
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(float(i) * cos(float(i)), 0) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(float(-i) * cos(float(i)), 0) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-			
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(0, float(i) * sin(float(i))) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(0, float(-i) * sin(float(i))) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-			
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(float(i) * cos(float(i)), float(i) * sin(float(i))) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(float(-i) * cos(float(i)), float(-i) * sin(float(i))) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-			
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(float(i) * cos(float(i)), float(-i) * sin(float(i))) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(float(-i) * cos(float(i)), float(i) * sin(float(i))) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-			
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(float(-i) * cos(float(i)), float(i) * sin(float(i))) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-			blurred += textureThresholded(screen_texture, SCREEN_UV + vec2(float(i) * cos(float(i)), float(-i) * sin(float(i))) * vec2(px, py) * vec2(hpass, vpass), k) * w[i];
-		}
-		
-		blurred /= float(radius) / 6.;
-		pixel += blurred;
-		
-	} else {
-		pixel = vec4(0., 0., 0., 1.);
-	}
-	
-	COLOR = pixel;
+    vec2 pix = FRAGCOORD.xy;
+    vec2 pos = warp(SCREEN_UV);
+    float line = roll_line(pos);
+    vec2 sq_pix = floor(pos * resolution) / resolution + vec2(0.5) / resolution;
+    if (interference_amount + roll_line_amount > 0.0) {
+        float interference = random(sq_pix.yy + fract(TIME));
+        pos.x += (interference * (interference_amount + line * 6.0)) / resolution.x;
+    }
+    vec3 clr = Tri(pos);
+    if (aberation_amount > 0.0) {
+        float chromatic = aberation_amount + line * 2.0;
+        vec2 cx = vec2(chromatic, 0.0) / resolution.x;
+        vec2 cy = vec2(0.0, chromatic / 2.0) / resolution.y;
+        clr = vec3(Tri(pos - cx).r, Tri(pos + cy).g, Tri(pos + cx).b);
+    }
+    if (grille_amount > 0.0) clr *= grille(pix);
+    clr *= 1.0 + scan_line_amount * 0.3 + line * 1.5 + grille_amount * 0.75;
+    if (vignette_amount > 0.0) clr *= vignette(pos);
+    COLOR = vec4(clr, 1.0);
 }

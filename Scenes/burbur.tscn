@@ -98,7 +98,7 @@ size = Vector2(4.32682, 3.84896)
 [node name="Burbur" type="CharacterBody2D" groups=["player"]]
 top_level = true
 scale = Vector2(2, 2)
-collision_mask = 7
+collision_mask = 3
 script = ExtResource("1_m5udg")
 
 [node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]

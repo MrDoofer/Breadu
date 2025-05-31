@@ -54,6 +54,7 @@ animations = [{
 size = Vector2(6, 8)
 
 [node name="Yooperlite" type="AnimatableBody2D"]
+collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_47cck")
 script = ExtResource("2_47cck")
 

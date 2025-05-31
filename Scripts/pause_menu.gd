@@ -1,5 +1,5 @@
 extends Control
-@onready var main = $".."
+@onready var main = $"../.."
 @onready var resume = $Resume
 var save_path = "user://variable.save"
 

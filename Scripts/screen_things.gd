@@ -1,5 +1,6 @@
 extends Node
-@onready var pause_menu = $"Pause Menu"
+@onready var pause_menu: Control = $"Camera2D/Pause Menu"
+
 var paused = false
 
 func _ready():
@@ -16,7 +17,7 @@ func toggle_pause():
 	if paused:
 		pause_menu.show()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		$"Pause Menu/Resume".grab_focus.call_deferred()
+		pause_menu.grab_focus.call_deferred()
 	else:
 		pause_menu.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN

@@ -149,6 +149,7 @@ position = Vector2(252, 144)
 [node name="map" type="Node" parent="."]
 
 [node name="bg001" type="Sprite2D" parent="map"]
+z_index = -1
 position = Vector2(160, 90)
 texture = ExtResource("12_rku1e")
 
@@ -164,6 +165,9 @@ energy = 0.71
 texture = ExtResource("2_igyqu")
 texture_scale = 0.58
 height = 15.0
+
+[node name="Geode" parent="map" instance=ExtResource("8_1phco")]
+position = Vector2(285, 140)
 
 [node name="Pickaxe" parent="map" instance=ExtResource("4_1phco")]
 position = Vector2(122, 144)
@@ -200,12 +204,6 @@ position = Vector2(203, 143)
 [node name="Grass7" parent="map" instance=ExtResource("6_2t1ve")]
 position = Vector2(68, 135)
 
-[node name="Yooperlite" parent="map" instance=ExtResource("8_rfjv2")]
-position = Vector2(216, 105)
-
-[node name="Node2D" parent="map" instance=ExtResource("8_1phco")]
-position = Vector2(285, 140)
-
 [node name="Water" type="Sprite2D" parent="map"]
 light_mask = 3
 visibility_layer = 3
@@ -215,13 +213,17 @@ position = Vector2(160, 170)
 scale = Vector2(1.3, 0.077)
 texture = ExtResource("2_igyqu")
 
+[node name="Yooperlite" parent="map" instance=ExtResource("8_rfjv2")]
+position = Vector2(243, 105)
+
 [node name="Yooperlite2" parent="map" instance=ExtResource("8_rfjv2")]
-position = Vector2(215, 81)
+position = Vector2(227, 82)
 
 [node name="Yooperlite3" parent="map" instance=ExtResource("8_rfjv2")]
-position = Vector2(256, 119)
+position = Vector2(255, 116)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="map"]
+position = Vector2(207, 127)
 energy = 0.77
 blend_mode = 1
 

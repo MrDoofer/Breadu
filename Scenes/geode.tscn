@@ -35,7 +35,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="Geode" type="Node2D"]
 script = ExtResource("1_g5el4")
 
 [node name="Area2D" type="Area2D" parent="."]

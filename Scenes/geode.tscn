@@ -50,6 +50,7 @@ sprite_frames = SubResource("SpriteFrames_3ictx")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="E" type="Sprite2D" parent="CanvasLayer"]
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("3_ja383")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

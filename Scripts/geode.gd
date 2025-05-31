@@ -20,8 +20,13 @@ func _on_area_2d_body_exited(body: Node2D):
 		touched = false
 		e.hide()
 func _process(delta: float):
-	if touched == true:
+	# Only show interaction icon if player is overlapping AND pickaxe is in hand
+	if touched and Global.pickaxeinhand:
 		e.show()
-	if touched == true and Input.is_action_just_pressed("Geodes"):
+	else:
+		e.hide()
+
+	# Only allow cracking if both touched and pickaxe in hand
+	if touched and Global.pickaxeinhand and Input.is_action_just_pressed("Geodes"):
 		animated_sprite_2d.play("Cracked")
 		area_2d.queue_free()

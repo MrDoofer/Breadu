@@ -35,6 +35,7 @@ project/assembly_name="Breadu"
 [gui]
 
 common/snap_controls_to_pixels=false
+theme/custom_font="uid://dv8oweavvnpjf"
 
 [importer_defaults]
 
@@ -78,8 +79,9 @@ Items={
 
 [layer_names]
 
-2d_physics/layer_1="World"
+2d_physics/layer_1="Player"
 2d_physics/layer_2="Interactable"
+2d_physics/layer_3="Items(notPlayer)"
 
 [rendering]
 

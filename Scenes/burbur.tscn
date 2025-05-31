@@ -93,12 +93,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds8ke"]
-size = Vector2(4.32682, 3.69792)
+size = Vector2(4.32682, 3.84896)
 
 [node name="Burbur" type="CharacterBody2D" groups=["player"]]
 top_level = true
 scale = Vector2(2, 2)
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_m5udg")
 
 [node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
@@ -121,7 +121,7 @@ wait_time = 0.109
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -2.42448)
 shape = SubResource("RectangleShape2D_ds8ke")
 one_way_collision_margin = 0.0
 

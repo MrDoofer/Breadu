@@ -1,8 +1,7 @@
 extends Node2D
+var geodes_available = false
 var touchable = false
-var pickedup =false
 @onready var item_popup: Sprite2D = $CanvasLayer/ItemPopup
-@onready var animatable_body_2d: CollisionShape2D = $CollisionShape2D
 @onready var burbur: CharacterBody2D = $"../../Burbur"
 func _hide_all(node):
 	if node is CanvasItem:
@@ -32,35 +31,26 @@ func _show_all(node):
 		_show_all(child)
 func _ready():
 	await get_tree().process_frame
-	animatable_body_2d.hide()
 	item_popup.hide()
 	item_popup.position = Vector2(160,160)
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == burbur and pickedup == false:
+	if body == burbur and Global.pickaxeinhand == false:
 		touchable = true
 		item_popup.show()
-		animatable_body_2d.show()
-	elif pickedup == false:
-		animatable_body_2d.hide()
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body == burbur and pickedup == false:
+	if body == burbur and Global.pickaxeinhand == false:
 		touchable = false
 		item_popup.hide()
-		animatable_body_2d.hide()
-	elif pickedup == false:
-		animatable_body_2d.show()
 func _process(delta: float):
+	if not self.hidden:
+		geodes_available=Input.is_action_pressed("Geodes")
 	if Input.is_action_just_pressed("Items"):
-		if touchable and not pickedup:
-			pickedup = true
-			_hide_all(self)
+		if touchable and not Global.pickaxeinhand:
+			self.rotation = 0
 			Global.pickaxeinhand = true
-		elif pickedup:
-			pickedup = false
-			_show_all(self)
-			self.position = burbur.position + Vector2(4, -8)
-			item_popup.position = Vector2(160, 160)
+			_hide_all(self)
+		elif Global.pickaxeinhand:
 			Global.pickaxeinhand = false
-			print("Self position:", self.position)
-			print("Area2D position:", $Area2D.position)
-			print("Area2D global:", $Area2D.global_position)
+			_show_all(self)
+			self.position = burbur.position + Vector2(4, -20)
+			item_popup.position = Vector2(160, 160)

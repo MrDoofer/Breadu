@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=28 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cw7brtmj21jau" path="res://Scenes/yooperlite.tscn" id="8_rfjv2"]
 [ext_resource type="Shader" uid="uid://bo7sem5soor4h" path="res://Shaders/crt.gdshader" id="10_ldgsr"]
 [ext_resource type="Script" uid="uid://cnbqc21fba11h" path="res://Scripts/screen_things.gd" id="10_rfjv2"]
+[ext_resource type="Texture2D" uid="uid://nr8tcby68nly" path="res://sprites/light or something like that.png" id="12_iivbl"]
 [ext_resource type="Texture2D" uid="uid://c2b5r0oy4yblc" path="res://sprites/BG's/1.png" id="12_rku1e"]
 [ext_resource type="Script" uid="uid://cp8x1cn0odaa0" path="res://Scripts/Main cam.gd" id="13_nnt18"]
 [ext_resource type="Texture2D" uid="uid://bht15p5ev4ihf" path="res://sprites/Item popup.png" id="15_ewbju"]
@@ -226,10 +227,11 @@ position = Vector2(160, 170)
 scale = Vector2(1.3, 0.077)
 texture = ExtResource("2_igyqu")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="map"]
-position = Vector2(207, 127)
-energy = 0.77
+[node name="DirectionalLight2D" type="PointLight2D" parent="map"]
+position = Vector2(160, 90)
+energy = 0.48
 blend_mode = 1
+texture = ExtResource("12_iivbl")
 
 [node name="screen things" type="Node" parent="."]
 script = ExtResource("10_rfjv2")
@@ -262,6 +264,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(77.348, 56.906, 0, 0)
+metadata/_edit_group_ = true
 
 [node name="ItemPopup" type="Sprite2D" parent="screen things/Camera2D/CanvasLayer"]
 position = Vector2(160, 170)

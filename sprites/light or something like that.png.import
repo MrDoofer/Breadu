@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://dyxkgp38g6hhu"
-=======
-uid="uid://56qgm055dy4k"
->>>>>>> 8b3a1cbbcd21a8c5d8bd87e73b6c9d8a0e1757d2
-path="res://.godot/imported/Sprite-0002.png-006a7d573f00d71cff50d745e035eded.ctex"
+uid="uid://nr8tcby68nly"
+path="res://.godot/imported/light or something like that.png-9e90125d9a75a63ac6a3f15e4f24c18f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Sprite-0002.png"
-dest_files=["res://.godot/imported/Sprite-0002.png-006a7d573f00d71cff50d745e035eded.ctex"]
+source_file="res://sprites/light or something like that.png"
+dest_files=["res://.godot/imported/light or something like that.png-9e90125d9a75a63ac6a3f15e4f24c18f.ctex"]
 
 [params]
 

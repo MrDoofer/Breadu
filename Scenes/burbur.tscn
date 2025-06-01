@@ -151,7 +151,7 @@ wait_time = 0.109
 autostart = true
 
 [node name="Frustrated" type="AnimatedSprite2D" parent="AnimationPlayer"]
-position = Vector2(-4, -4)
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_earcd")
 animation = &"Frustrated"
 autoplay = "Calm"

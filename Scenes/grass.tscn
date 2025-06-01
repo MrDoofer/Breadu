@@ -167,7 +167,6 @@ shape = SubResource("RectangleShape2D_ccvh5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="G1"]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_kvs45")
-animation = &"Released"
 autoplay = "default"
 
 [node name="G2" type="Area2D" parent="."]
@@ -178,7 +177,6 @@ script = SubResource("GDScript_6s8e4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="G2"]
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_a0eg2")
-animation = &"Released"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="G2"]

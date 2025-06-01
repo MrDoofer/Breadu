@@ -2,8 +2,7 @@ extends Node2D
 var touched = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_2d: Area2D = $Area2D
-@onready var e: Sprite2D = $CanvasLayer/E
-
+@onready var e: Sprite2D = $"../../screen things/Camera2D/CanvasLayer/E"
 
 func _ready():
 	await get_tree().process_frame

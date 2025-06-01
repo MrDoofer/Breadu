@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=27 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bht15p5ev4ihf" path="res://sprites/Item popup.png" id="15_ewbju"]
 [ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://sprites/Pick.png" id="15_nnt18"]
 [ext_resource type="Texture2D" uid="uid://bn8wosxtj2go8" path="res://sprites/e.png" id="16_ewbju"]
+[ext_resource type="Texture2D" uid="uid://6pqu38kr7di0" path="res://sprites/Sprite-0001.png" id="18_85qyi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nb51f"]
 
@@ -278,3 +279,7 @@ offset_bottom = -56.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nnt18")
+
+[node name="Sprite-0001" type="Sprite2D" parent="."]
+position = Vector2(-160, 90)
+texture = ExtResource("18_85qyi")

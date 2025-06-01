@@ -38,12 +38,10 @@ func _process(delta):
 		Global.playerFliped = false
 		animation_player.flip_h = false
 		animated_sprite_2d.flip_h = false
-		frustrated.position + Vector2(0,-4)
 	elif direction < 0:
 		Global.playerFliped = true
 		animation_player.flip_h = true
 		animated_sprite_2d.flip_h = true
-		frustrated.position + Vector2(0,4)
 
 	
 	# Play animations

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=29 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://sprites/Pick.png" id="15_nnt18"]
 [ext_resource type="Texture2D" uid="uid://bn8wosxtj2go8" path="res://sprites/e.png" id="16_ewbju"]
 [ext_resource type="Texture2D" uid="uid://6pqu38kr7di0" path="res://sprites/Sprite-0001.png" id="18_85qyi"]
+[ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/Sprite-0002.png" id="20_7nbq1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nb51f"]
 
@@ -63,10 +64,28 @@ texture_region_size = Vector2i(8, 8)
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 2:8/0 = 0
 2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:9/0 = 0
+2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:10/0 = 0
+2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:11/0 = 0
+2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 3:8/0 = 0
 3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+3:9/0 = 0
+3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+3:10/0 = 0
+3:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+3:11/0 = 0
+3:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 4:8/0 = 0
 4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+4:9/0 = 0
+4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+4:10/0 = 0
+4:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+4:11/0 = 0
+4:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 5:8/0 = 0
 5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 5:9/0 = 0
@@ -75,24 +94,6 @@ texture_region_size = Vector2i(8, 8)
 5:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 5:11/0 = 0
 5:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-4:11/0 = 0
-4:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-3:11/0 = 0
-3:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-2:11/0 = 0
-2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-2:10/0 = 0
-2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-2:9/0 = 0
-2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-3:9/0 = 0
-3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-4:9/0 = 0
-4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-4:10/0 = 0
-4:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-3:10/0 = 0
-3:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
 [sub_resource type="TileSet" id="TileSet_fkjq7"]
 tile_size = Vector2i(8, 8)
@@ -160,7 +161,7 @@ texture = ExtResource("12_rku1e")
 
 [node name="Pick" type="Sprite2D" parent="map"]
 modulate = Color(1, 1.128, 4.136, 1)
-position = Vector2(56, 86)
+position = Vector2(28, 86)
 texture = ExtResource("15_nnt18")
 
 [node name="PointLight2D" type="PointLight2D" parent="map/Pick"]
@@ -229,7 +230,7 @@ texture = ExtResource("2_igyqu")
 
 [node name="DirectionalLight2D" type="PointLight2D" parent="map"]
 position = Vector2(160, 90)
-energy = 0.48
+energy = 0.53
 blend_mode = 1
 texture = ExtResource("12_iivbl")
 
@@ -284,5 +285,10 @@ offset_bottom = -56.0
 environment = SubResource("Environment_nnt18")
 
 [node name="Sprite-0001" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-160, 90)
 texture = ExtResource("18_85qyi")
+
+[node name="Sprite-0002" type="Sprite2D" parent="."]
+position = Vector2(-160, 90)
+texture = ExtResource("20_7nbq1")

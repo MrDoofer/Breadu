@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=28 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bht15p5ev4ihf" path="res://sprites/Item popup.png" id="15_ewbju"]
 [ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://sprites/Pick.png" id="15_nnt18"]
 [ext_resource type="Texture2D" uid="uid://bn8wosxtj2go8" path="res://sprites/e.png" id="16_ewbju"]
-[ext_resource type="Texture2D" uid="uid://6pqu38kr7di0" path="res://sprites/Sprite-0001.png" id="18_85qyi"]
 [ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/Sprite-0002.png" id="20_7nbq1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nb51f"]
@@ -73,8 +72,8 @@ shader = ExtResource("10_ldgsr")
 shader_parameter/resolution = Vector2(320, 180)
 shader_parameter/scan_line_amount = 1.0
 shader_parameter/warp_amount = 0.0
-shader_parameter/noise_amount = 0.002
-shader_parameter/interference_amount = 0.4
+shader_parameter/noise_amount = 0.0
+shader_parameter/interference_amount = 0.2
 shader_parameter/grille_amount = 0.2
 shader_parameter/grille_size = 0.5
 shader_parameter/vignette_amount = 0.0
@@ -100,22 +99,28 @@ script = ExtResource("1_o0h88")
 
 [node name="Burbur" parent="." instance=ExtResource("1_txd6a")]
 z_index = 1
-position = Vector2(252, 144)
+position = Vector2(253, 148)
 
 [node name="map" type="Node" parent="."]
 
-[node name="bg001" type="Sprite2D" parent="map"]
+[node name="BG\'s" type="Node" parent="map"]
+
+[node name="bg001" type="Sprite2D" parent="map/BG\'s"]
 z_index = -1
 position = Vector2(160, 90)
 texture = ExtResource("12_rku1e")
 
+[node name="Sprite-0002" type="Sprite2D" parent="map/BG\'s"]
+position = Vector2(-160, 90)
+texture = ExtResource("20_7nbq1")
+
 [node name="Pick" type="Sprite2D" parent="map"]
 modulate = Color(1, 1.128, 4.136, 1)
-position = Vector2(28, 86)
+position = Vector2(28, 90)
 texture = ExtResource("15_nnt18")
 
 [node name="PointLight2D" type="PointLight2D" parent="map/Pick"]
-position = Vector2(-5, -9.25)
+position = Vector2(-6, -14)
 scale = Vector2(1.00781, 0.814453)
 energy = 0.71
 texture = ExtResource("2_igyqu")
@@ -123,47 +128,50 @@ texture_scale = 0.58
 height = 15.0
 
 [node name="Geode" parent="map" instance=ExtResource("8_1phco")]
-position = Vector2(285, 140)
+position = Vector2(285, 144)
+
+[node name="Grasses" type="Node" parent="map"]
+
+[node name="Grass" parent="map/Grasses" instance=ExtResource("6_2t1ve")]
+position = Vector2(36, 145)
+
+[node name="Grice" parent="map/Grasses" instance=ExtResource("6_2t1ve")]
+position = Vector2(271, 145)
+
+[node name="Grass2" parent="map/Grasses" instance=ExtResource("6_2t1ve")]
+position = Vector2(148, 153)
+
+[node name="Grass3" parent="map/Grasses" instance=ExtResource("6_2t1ve")]
+position = Vector2(172, 153)
+
+[node name="Grass4" parent="map/Grasses" instance=ExtResource("6_2t1ve")]
+position = Vector2(300, 145)
+
+[node name="Grass5" parent="map/Grasses" instance=ExtResource("6_2t1ve")]
+position = Vector2(237, 153)
+
+[node name="Grass6" parent="map/Grasses" instance=ExtResource("6_2t1ve")]
+position = Vector2(202, 153)
+
+[node name="Grass7" parent="map/Grasses" instance=ExtResource("6_2t1ve")]
+position = Vector2(67, 145)
 
 [node name="TileMap" type="TileMap" parent="map"]
+position = Vector2(0, 4)
 tile_set = SubResource("TileSet_fkjq7")
 rendering_quadrant_size = 8
 format = 2
 layer_0/name = "normal"
-layer_0/tile_data = PackedInt32Array(1179648, 65538, 0, 1245184, 196610, 1, 1310720, 196610, 1, 1376256, 196610, 1, 1179649, 65538, 0, 1245185, 196610, 1, 1310721, 196610, 1, 1376257, 196610, 1, 1179650, 65538, 0, 1245186, 196610, 1, 1310722, 196610, 1, 1376258, 196610, 1, 1179651, 65538, 0, 1245187, 196610, 1, 1310723, 196610, 1, 1376259, 196610, 1, 1179652, 65538, 0, 1245188, 196610, 1, 1310724, 196610, 1, 1376260, 196610, 1, 1179653, 65538, 0, 1245189, 196610, 1, 1310725, 196610, 1, 1376261, 196610, 1, 1179654, 65538, 0, 1245190, 196610, 1, 1310726, 196610, 1, 1376262, 196610, 1, 1179655, 65538, 0, 1245191, 196610, 1, 1310727, 196610, 1, 1376263, 196610, 1, 1179656, 65538, 0, 1245192, 196610, 1, 1310728, 196610, 1, 1376264, 196610, 1, 1179657, 65538, 0, 1245193, 196610, 1, 1310729, 196610, 1, 1376265, 196610, 1, 1179658, 65538, 0, 1245194, 196610, 1, 1310730, 196610, 1, 1376266, 196610, 1, 1179659, 131074, 0, 1245195, 196610, 1, 1310731, 196610, 1, 1376267, 196610, 1, 1245196, 65538, 0, 1310732, 65538, 1, 1376268, 65538, 1, 1245197, 65538, 0, 1310733, 65538, 1, 1376269, 65538, 1, 1245198, 65538, 0, 1310734, 65538, 1, 1376270, 65538, 1, 1245199, 65538, 0, 1310735, 65538, 1, 1376271, 65538, 1, 1245200, 65538, 0, 1310736, 65538, 1, 1376272, 65538, 1, 1245201, 65538, 0, 1310737, 65538, 1, 1376273, 65538, 1, 1245202, 65538, 0, 1310738, 65538, 1, 1376274, 65538, 1, 1245203, 65538, 0, 1310739, 65538, 1, 1376275, 65538, 1, 1245204, 65538, 0, 1310740, 65538, 1, 1376276, 65538, 1, 1245205, 65538, 0, 1310741, 65538, 1, 1376277, 65538, 1, 1245206, 65538, 0, 1310742, 65538, 1, 1376278, 65538, 1, 1245207, 65538, 0, 1310743, 65538, 1, 1376279, 65538, 1, 1245208, 65538, 0, 1310744, 65538, 1, 1376280, 65538, 1, 1245209, 65538, 0, 1310745, 65538, 1, 1376281, 65538, 1, 1245210, 65538, 0, 1310746, 65538, 1, 1376282, 65538, 1, 1245211, 65538, 0, 1310747, 65538, 1, 1376283, 65538, 1, 1245212, 65538, 0, 1310748, 65538, 1, 1376284, 65538, 1, 1245213, 65538, 0, 1310749, 65538, 1, 1376285, 65538, 1, 1245214, 65538, 0, 1310750, 65538, 1, 1376286, 65538, 1, 1179679, 2, 0, 1245215, 196610, 1, 1310751, 65538, 1, 1376287, 65538, 1, 1179680, 65538, 0, 1245216, 196610, 1, 1310752, 65538, 1, 1376288, 65538, 1, 1179681, 65538, 0, 1245217, 196610, 1, 1310753, 65538, 1, 1376289, 65538, 1, 1179682, 65538, 0, 1245218, 196610, 1, 1310754, 65538, 1, 1376290, 65538, 1, 1179683, 65538, 0, 1245219, 196610, 1, 1310755, 65538, 1, 1376291, 65538, 1, 1179684, 65538, 0, 1245220, 196610, 1, 1310756, 65538, 1, 1376292, 65538, 1, 1179685, 65538, 0, 1245221, 196610, 1, 1310757, 65538, 1, 1376293, 65538, 1, 1179686, 65538, 0, 1245222, 65538, 1, 1310758, 65538, 1, 1376294, 65538, 1, 1179687, 65538, 0, 1245223, 65538, 1, 1310759, 65538, 1, 1376295, 65538, 1, 458782, 196610, 2, 458783, 131074, 1, 393246, 2, 0, 327711, 2, 0, 327712, 65538, 0, 393248, 65538, 1, 327713, 65538, 0, 393249, 65538, 1, 327714, 65538, 0, 393250, 65538, 1, 327715, 65538, 0, 393251, 65538, 1, 327716, 65538, 0, 393252, 65538, 1, 327717, 65538, 0, 393253, 65538, 1, 327718, 65538, 0, 393254, 65538, 1, 327719, 65538, 0, 393255, 65538, 1, 393247, 196610, 1, 1245183, 65538, 0, 1245182, 65538, 0, 1245181, 65538, 0, 1245180, 65538, 0, 1310719, 196610, 1, 1310718, 196610, 1, 1310717, 196610, 1, 1310716, 196610, 1, 1376252, 196610, 1, 1441788, 196610, 1, 1441789, 196610, 1, 1441790, 196610, 1, 1441791, 196610, 1, 1376255, 196610, 1, 1376254, 196610, 1, 1376253, 196610, 1, 524314, 2, 0, 524315, 131074, 0)
-
-[node name="Grass" parent="map" instance=ExtResource("6_2t1ve")]
-position = Vector2(37, 135)
-
-[node name="Grice" parent="map" instance=ExtResource("6_2t1ve")]
-position = Vector2(272, 135)
-
-[node name="Grass2" parent="map" instance=ExtResource("6_2t1ve")]
-position = Vector2(149, 143)
-
-[node name="Grass3" parent="map" instance=ExtResource("6_2t1ve")]
-position = Vector2(173, 143)
-
-[node name="Grass4" parent="map" instance=ExtResource("6_2t1ve")]
-position = Vector2(301, 135)
-
-[node name="Grass5" parent="map" instance=ExtResource("6_2t1ve")]
-position = Vector2(238, 143)
-
-[node name="Grass6" parent="map" instance=ExtResource("6_2t1ve")]
-position = Vector2(203, 143)
-
-[node name="Grass7" parent="map" instance=ExtResource("6_2t1ve")]
-position = Vector2(68, 135)
+layer_0/tile_data = PackedInt32Array(1179648, 65538, 0, 1245184, 196610, 1, 1310720, 196610, 1, 1376256, 196610, 1, 1179649, 65538, 0, 1245185, 196610, 1, 1310721, 196610, 1, 1376257, 196610, 1, 1179650, 65538, 0, 1245186, 196610, 1, 1310722, 196610, 1, 1376258, 196610, 1, 1179651, 65538, 0, 1245187, 196610, 1, 1310723, 196610, 1, 1376259, 196610, 1, 1179652, 65538, 0, 1245188, 196610, 1, 1310724, 196610, 1, 1376260, 196610, 1, 1179653, 65538, 0, 1245189, 196610, 1, 1310725, 196610, 1, 1376261, 196610, 1, 1179654, 65538, 0, 1245190, 196610, 1, 1310726, 196610, 1, 1376262, 196610, 1, 1179655, 65538, 0, 1245191, 196610, 1, 1310727, 196610, 1, 1376263, 196610, 1, 1179656, 65538, 0, 1245192, 196610, 1, 1310728, 196610, 1, 1376264, 196610, 1, 1179657, 65538, 0, 1245193, 196610, 1, 1310729, 196610, 1, 1376265, 196610, 1, 1179658, 65538, 0, 1245194, 196610, 1, 1310730, 196610, 1, 1376266, 196610, 1, 1179659, 131074, 0, 1245195, 196610, 1, 1310731, 196610, 1, 1376267, 196610, 1, 1245196, 65538, 0, 1310732, 196610, 1, 1376268, 196610, 1, 1245197, 65538, 0, 1310733, 196610, 1, 1376269, 196610, 1, 1245198, 65538, 0, 1310734, 196610, 1, 1376270, 196610, 1, 1245199, 65538, 0, 1310735, 196610, 1, 1376271, 196610, 1, 1245200, 65538, 0, 1310736, 196610, 1, 1376272, 196610, 1, 1245201, 65538, 0, 1310737, 196610, 1, 1376273, 196610, 1, 1245202, 65538, 0, 1310738, 196610, 1, 1376274, 196610, 1, 1245203, 65538, 0, 1310739, 196610, 1, 1376275, 196610, 1, 1245204, 65538, 0, 1310740, 196610, 1, 1376276, 196610, 1, 1245205, 65538, 0, 1310741, 196610, 1, 1376277, 196610, 1, 1245206, 65538, 0, 1310742, 196610, 1, 1376278, 196610, 1, 1245207, 65538, 0, 1310743, 196610, 1, 1376279, 196610, 1, 1245208, 65538, 0, 1310744, 196610, 1, 1376280, 196610, 1, 1245209, 65538, 0, 1310745, 196610, 1, 1376281, 196610, 1, 1245210, 65538, 0, 1310746, 196610, 1, 1376282, 196610, 1, 1245211, 65538, 0, 1310747, 196610, 1, 1376283, 196610, 1, 1245212, 65538, 0, 1310748, 196610, 1, 1376284, 196610, 1, 1245213, 65538, 0, 1310749, 196610, 1, 1376285, 196610, 1, 1245214, 65538, 0, 1310750, 196610, 1, 1376286, 196610, 1, 1179679, 2, 0, 1245215, 196610, 1, 1310751, 196610, 1, 1376287, 196610, 1, 1179680, 65538, 0, 1245216, 196610, 1, 1310752, 196610, 1, 1376288, 196610, 1, 1179681, 65538, 0, 1245217, 196610, 1, 1310753, 196610, 1, 1376289, 196610, 1, 1179682, 65538, 0, 1245218, 196610, 1, 1310754, 196610, 1, 1376290, 196610, 1, 1179683, 65538, 0, 1245219, 196610, 1, 1310755, 196610, 1, 1376291, 196610, 1, 1179684, 65538, 0, 1245220, 196610, 1, 1310756, 196610, 1, 1376292, 196610, 1, 1179685, 65538, 0, 1376293, 196610, 1, 1179686, 65538, 0, 1376294, 196610, 1, 1179687, 65538, 0, 1376295, 196610, 1, 458782, 196610, 2, 458783, 131074, 1, 393246, 2, 0, 327711, 2, 0, 327712, 65538, 0, 393248, 65538, 1, 327713, 65538, 0, 393249, 65538, 1, 327714, 65538, 0, 393250, 65538, 1, 327715, 65538, 0, 393251, 65538, 1, 327716, 65538, 0, 393252, 65538, 1, 327717, 65538, 0, 393253, 65538, 1, 327718, 65538, 0, 393254, 65538, 1, 327719, 65538, 0, 393255, 65538, 1, 393247, 196610, 1, 1245183, 65538, 0, 1245182, 65538, 0, 1245181, 65538, 0, 1245180, 65538, 0, 1310719, 196610, 1, 1310718, 196610, 1, 1310717, 196610, 1, 1310716, 196610, 1, 1376252, 196610, 1, 1441788, 196610, 1, 1441789, 196610, 1, 1441790, 196610, 1, 1441791, 196610, 1, 1376255, 196610, 1, 1376254, 196610, 1, 1376253, 196610, 1, 524314, 2, 0, 524315, 131074, 0, 1245221, 196610, 1, 1245222, 196610, 1, 1245223, 196610, 1, 1310759, 196610, 1, 1310758, 196610, 1, 1310757, 196610, 1)
 
 [node name="Yooperlite" parent="map" instance=ExtResource("8_rfjv2")]
-position = Vector2(243, 105)
+position = Vector2(244, 109)
 
 [node name="Yooperlite2" parent="map" instance=ExtResource("8_rfjv2")]
-position = Vector2(227, 82)
+position = Vector2(228, 87)
 
 [node name="Yooperlite3" parent="map" instance=ExtResource("8_rfjv2")]
-position = Vector2(255, 116)
+position = Vector2(266, 122)
 
 [node name="Pickaxe" parent="map" instance=ExtResource("4_1phco")]
 position = Vector2(122, 144)
@@ -233,12 +241,3 @@ offset_bottom = -56.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nnt18")
-
-[node name="Sprite-0001" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-160, 90)
-texture = ExtResource("18_85qyi")
-
-[node name="Sprite-0002" type="Sprite2D" parent="."]
-position = Vector2(-160, 90)
-texture = ExtResource("20_7nbq1")

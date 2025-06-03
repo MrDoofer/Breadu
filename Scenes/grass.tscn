@@ -1,8 +1,89 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvk1i2njqmxjd"]
+[gd_scene load_steps=11 format=3 uid="uid://cvk1i2njqmxjd"]
 
 [ext_resource type="Script" uid="uid://bpalefaddrxhn" path="res://Scripts/grass.gd" id="1_jwwo6"]
+[ext_resource type="Texture2D" uid="uid://cgsx25b2j6l7v" path="res://sprites/Grass.png" id="2_on02d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm417"]
+atlas = ExtResource("2_on02d")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qruad"]
+atlas = ExtResource("2_on02d")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gyqa"]
+atlas = ExtResource("2_on02d")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1qba"]
+atlas = ExtResource("2_on02d")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaoxa"]
+atlas = ExtResource("2_on02d")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr604"]
+atlas = ExtResource("2_on02d")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e406d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm417")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qruad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gyqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1qba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gyqa")
+}],
+"loop": false,
+"name": &"steepped off",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaoxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr604")
+}],
+"loop": false,
+"name": &"stepped on",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47oxd"]
+size = Vector2(8.5, 3.25)
 
 [node name="Grass" type="Node2D"]
+process_priority = 2
+z_index = 1
 script = ExtResource("1_jwwo6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_priority = 1
+sprite_frames = SubResource("SpriteFrames_e406d")
+autoplay = "default"
+
+[node name="StaticBody2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.625)
+shape = SubResource("RectangleShape2D_47oxd")
+
+[connection signal="body_entered" from="StaticBody2D" to="." method="_on_static_body_2d_body_entered"]
+[connection signal="body_exited" from="StaticBody2D" to="." method="_on_static_body_2d_body_exited"]

@@ -8,6 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation_player: AnimatedSprite2D = $AnimationPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimationPlayer/AnimatedSprite2D
 @onready var frustrated: AnimatedSprite2D = $AnimationPlayer/Frustrated
+@onready var jump: AudioStreamPlayer2D = $Jump
 
 var isGrounded = true
 var frustrated_triggered := false
@@ -29,6 +30,7 @@ func _process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("Up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jump.play()
 
 	# Get the input direction: -1, 0, 1
 	var direction = Input.get_axis("Left", "Right")

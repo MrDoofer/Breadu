@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://d32gkh7jhof5a"]
+[gd_scene load_steps=20 format=3 uid="uid://d32gkh7jhof5a"]
 
 [ext_resource type="Script" uid="uid://cowwamh8lf0jc" path="res://Scripts/burbur.gd" id="1_m5udg"]
 [ext_resource type="Texture2D" uid="uid://doeddnvmhmt3l" path="res://sprites/Rock.png" id="2_7n0wo"]
 [ext_resource type="Shader" uid="uid://dr6b3xvb4hv7a" path="res://Shaders/Glow.gdshader" id="3_ds8ke"]
+[ext_resource type="AudioStream" uid="uid://dkd50bpw20nvl" path="res://Sounds/Jump.mp3" id="4_iok6u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds8ke"]
 atlas = ExtResource("2_7n0wo")
@@ -164,5 +165,12 @@ shape = SubResource("RectangleShape2D_ds8ke")
 one_way_collision_margin = 0.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("4_iok6u")
+volume_db = -7.2
+bus = &"Player and items"
 
 [connection signal="timeout" from="AnimationPlayer/AnimatedSprite2D/eyes" to="." method="_on_eyes_timeout"]

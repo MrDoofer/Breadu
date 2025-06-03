@@ -132,7 +132,7 @@ collision_mask = 3
 script = ExtResource("1_m5udg")
 
 [node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -2.5)
+position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_7n0wo")
 autoplay = "default"
@@ -159,7 +159,7 @@ autoplay = "Calm"
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2.42448)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_ds8ke")
 one_way_collision_margin = 0.0
 

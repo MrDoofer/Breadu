@@ -84,6 +84,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _process(delta: float):
 	if Input.is_action_just_pressed("Items"):
 		if touchable and not Global.pickaxeinhand:
+			Global.pickeduppickaxe == true
 			Items_succesful()
 		elif not touchable and Global.pickaxeinhand:
 			var polygon = $CollisionPolygon2D.polygon
@@ -93,6 +94,5 @@ func _process(delta: float):
 				_spawn_if_safe(polygon, burbur.position + Vector2(-6, -20))
 			if Global.pickspawn_failed == false:
 				Items_failed()
-
 			elif Global.pickspawn_failed == true:
 				null

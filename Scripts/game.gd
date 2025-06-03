@@ -3,3 +3,4 @@ extends Node2D
 var pickaxeinhand = false
 var playerFliped = false
 var pickspawn_failed = false 
+var pickeduppickaxe = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://8013psc2yag6"]
+[gd_scene load_steps=30 format=3 uid="uid://8013psc2yag6"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -18,7 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://bht15p5ev4ihf" path="res://sprites/Item popup.png" id="15_ewbju"]
 [ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://sprites/Pick.png" id="15_nnt18"]
 [ext_resource type="Texture2D" uid="uid://bn8wosxtj2go8" path="res://sprites/e.png" id="16_ewbju"]
+[ext_resource type="Texture2D" uid="uid://cfrk3ybnf4u4s" path="res://sprites/InHand.png" id="19_exi56"]
 [ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/Sprite-0002.png" id="20_7nbq1"]
+[ext_resource type="Script" uid="uid://detmb86emfkpl" path="res://Scripts/Screen.gd" id="20_7t8sx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nb51f"]
 
@@ -231,6 +233,11 @@ texture = ExtResource("15_ewbju")
 
 [node name="E" type="Sprite2D" parent="screen things/Camera2D/CanvasLayer"]
 texture = ExtResource("16_ewbju")
+
+[node name="InHand" type="Sprite2D" parent="screen things/Camera2D/CanvasLayer"]
+position = Vector2(10, 170)
+texture = ExtResource("19_exi56")
+script = ExtResource("20_7t8sx")
 
 [node name="Pause Menu" parent="screen things/Camera2D" instance=ExtResource("7_4ca43")]
 visible = false

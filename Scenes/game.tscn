@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://m5sfreasoygs" path="res://sprites/2d_lights_and_shadows_neutral_point_light.webp" id="2_igyqu"]
 [ext_resource type="Texture2D" uid="uid://bauk05youv3so" path="res://sprites/Spritesheet.png" id="3_1yb1k"]
 [ext_resource type="PackedScene" uid="uid://dlme03jybalhe" path="res://Scenes/Pickaxe.tscn" id="4_1phco"]
+[ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/Sprite-0002.png" id="4_iivbl"]
 [ext_resource type="PackedScene" uid="uid://cvk1i2njqmxjd" path="res://Scenes/grass.tscn" id="6_2t1ve"]
 [ext_resource type="Shader" uid="uid://dds2hq8phrbw8" path="res://Shaders/Water.gdshader" id="6_olox2"]
 [ext_resource type="PackedScene" uid="uid://b7eq6rqvb2ddb" path="res://Scenes/pause_menu.tscn" id="7_4ca43"]
@@ -18,9 +19,18 @@
 [ext_resource type="Texture2D" uid="uid://bht15p5ev4ihf" path="res://sprites/Item popup.png" id="15_ewbju"]
 [ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://sprites/Pick.png" id="15_nnt18"]
 [ext_resource type="Texture2D" uid="uid://bn8wosxtj2go8" path="res://sprites/e.png" id="16_ewbju"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://cfrk3ybnf4u4s" path="res://sprites/InHand.png" id="19_exi56"]
 [ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/Sprite-0002.png" id="20_7nbq1"]
 [ext_resource type="Script" uid="uid://detmb86emfkpl" path="res://Scripts/Screen.gd" id="20_7t8sx"]
+=======
+<<<<<<< HEAD
+=======
+[ext_resource type="Texture2D" uid="uid://cfrk3ybnf4u4s" path="res://sprites/InHand.png" id="19_exi56"]
+[ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/Sprite-0002.png" id="20_7nbq1"]
+[ext_resource type="Script" uid="uid://detmb86emfkpl" path="res://Scripts/Screen.gd" id="20_7t8sx"]
+>>>>>>> 5bbb4d6c71e6bb7311b9a2b2177c70a5e75f5bd6
+>>>>>>> Stashed changes
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nb51f"]
 
@@ -114,7 +124,13 @@ texture = ExtResource("12_rku1e")
 
 [node name="Sprite-0002" type="Sprite2D" parent="map/BG\'s"]
 position = Vector2(-160, 90)
-texture = ExtResource("20_7nbq1")
+texture = ExtResource("4_iivbl")
+
+[node name="DirectionalLight2D" type="PointLight2D" parent="map/BG\'s/Sprite-0002"]
+position = Vector2(1, 0)
+energy = 0.78
+blend_mode = 1
+texture = ExtResource("12_iivbl")
 
 [node name="Pick" type="Sprite2D" parent="map"]
 modulate = Color(1, 1.128, 4.136, 1)

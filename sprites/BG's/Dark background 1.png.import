@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
 uid="uid://dieerhn7x2115"
-=======
-uid="uid://76nddo055p54"
->>>>>>> 390239d9ac8a1bb21d26c7acec860582c8d4499d
-path="res://.godot/imported/Dark background 1.png-2c429147130ddbfa7e78109811c12ac0.ctex"
+path="res://.godot/imported/Dark background 1.png-5decc99444a4028efa9a196cdd45c8e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Dark background 1.png"
-dest_files=["res://.godot/imported/Dark background 1.png-2c429147130ddbfa7e78109811c12ac0.ctex"]
+source_file="res://sprites/BG's/Dark background 1.png"
+dest_files=["res://.godot/imported/Dark background 1.png-5decc99444a4028efa9a196cdd45c8e7.ctex"]
 
 [params]
 

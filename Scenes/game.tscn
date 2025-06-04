@@ -24,9 +24,18 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://cfrk3ybnf4u4s" path="res://sprites/InHand.png" id="19_exi56"]
 [ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/Sprite-0002.png" id="20_7nbq1"]
 [ext_resource type="Script" uid="uid://detmb86emfkpl" path="res://Scripts/Screen.gd" id="20_7t8sx"]
+=======
+<<<<<<< HEAD
+=======
+[ext_resource type="Texture2D" uid="uid://cfrk3ybnf4u4s" path="res://sprites/InHand.png" id="19_exi56"]
+[ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/Sprite-0002.png" id="20_7nbq1"]
+[ext_resource type="Script" uid="uid://detmb86emfkpl" path="res://Scripts/Screen.gd" id="20_7t8sx"]
+>>>>>>> 5bbb4d6c71e6bb7311b9a2b2177c70a5e75f5bd6
+>>>>>>> Stashed changes
 =======
 <<<<<<< HEAD
 =======

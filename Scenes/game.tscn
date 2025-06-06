@@ -117,6 +117,11 @@ z_index = -1
 position = Vector2(-160, 90)
 texture = ExtResource("20_7nbq1")
 
+[node name="DirectionalLight2D" type="PointLight2D" parent="map/BG\'s/Sprite-0002"]
+energy = 0.78
+blend_mode = 1
+texture = ExtResource("12_iivbl")
+
 [node name="Pick" type="Sprite2D" parent="map"]
 modulate = Color(1, 1.128, 4.136, 1)
 position = Vector2(28, 90)

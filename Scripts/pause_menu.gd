@@ -16,7 +16,8 @@ func save():
 	file.store_var(Global.pickaxeinhand)
 	file.store_var(Global.pickeduppickaxe)
 	file.store_var(Global.geodes_opened)
-	file.store_var($"../../../Burbur".global_position)  # 👈 Save the item's world position
+	file.store_var($"../../../Burbur".global_position)
+
 
 func load_data():
 	if FileAccess.file_exists(save_path):
@@ -24,9 +25,8 @@ func load_data():
 		Global.pickaxeinhand = file.get_var()
 		Global.pickeduppickaxe = file.get_var()
 		Global.geodes_opened = file.get_var()
+		$"../../../Burbur".global_position =file.get_var()  # 👈 Reapply saved position
 
-		var saved_position = file.get_var()
-		$"../../../Burbur".global_position = saved_position  # 👈 Reapply saved position
 
 		# Optionally reapply states to pickaxe or geodes
 

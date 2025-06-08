@@ -49,3 +49,18 @@ func _on_save_pressed():
 
 func _on_load_pressed():
 	load_data()
+
+
+func _on_del_save_pressed() -> void:
+	if FileAccess.file_exists(save_path):
+		var dir := DirAccess.open("user://")
+		if dir != null:
+			var err := dir.remove("variable.save")
+			if err == OK:
+				print("Save file deleted successfully.")
+			else:
+				print("Failed to delete the save file. Error code:", err)
+		else:
+			print("Failed to access user directory.")
+	else:
+		print("No save file exists to delete.")

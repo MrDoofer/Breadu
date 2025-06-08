@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bhlnnaumfp7ly" path="res://sprites/Pick.png" id="15_nnt18"]
 [ext_resource type="Texture2D" uid="uid://bn8wosxtj2go8" path="res://sprites/e.png" id="16_ewbju"]
 [ext_resource type="Texture2D" uid="uid://cfrk3ybnf4u4s" path="res://sprites/InHand.png" id="19_exi56"]
-[ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/Sprite-0002.png" id="20_7nbq1"]
+[ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/BG's/Sprite-0002.png" id="20_7nbq1"]
 [ext_resource type="Script" uid="uid://detmb86emfkpl" path="res://Scripts/Screen.gd" id="20_7t8sx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nb51f"]
@@ -116,6 +116,11 @@ texture = ExtResource("12_rku1e")
 z_index = -1
 position = Vector2(-160, 90)
 texture = ExtResource("20_7nbq1")
+
+[node name="DirectionalLight2D" type="PointLight2D" parent="map/BG\'s/Sprite-0002"]
+energy = 0.78
+blend_mode = 1
+texture = ExtResource("12_iivbl")
 
 [node name="Pick" type="Sprite2D" parent="map"]
 modulate = Color(1, 1.128, 4.136, 1)

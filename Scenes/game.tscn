@@ -164,6 +164,12 @@ position = Vector2(202, 153)
 [node name="Grass7" parent="map/Grasses" instance=ExtResource("6_2t1ve")]
 position = Vector2(67, 145)
 
+[node name="Items" type="Node" parent="map"]
+
+[node name="Pickaxe" parent="map/Items" instance=ExtResource("4_1phco")]
+position = Vector2(122, 144)
+scale = Vector2(1.5, 1.5)
+
 [node name="TileMap" type="TileMap" parent="map"]
 position = Vector2(0, 4)
 tile_set = SubResource("TileSet_fkjq7")
@@ -180,10 +186,6 @@ position = Vector2(228, 87)
 
 [node name="Yooperlite3" parent="map" instance=ExtResource("8_rfjv2")]
 position = Vector2(266, 122)
-
-[node name="Pickaxe" parent="map" instance=ExtResource("4_1phco")]
-position = Vector2(122, 144)
-scale = Vector2(1.5, 1.5)
 
 [node name="Water" type="Sprite2D" parent="map"]
 light_mask = 3
@@ -238,6 +240,7 @@ position = Vector2(160, 170)
 texture = ExtResource("15_ewbju")
 
 [node name="E" type="Sprite2D" parent="screen things/Camera2D/CanvasLayer"]
+position = Vector2(160, 170)
 texture = ExtResource("16_ewbju")
 
 [node name="InHand" type="Sprite2D" parent="screen things/Camera2D/CanvasLayer"]

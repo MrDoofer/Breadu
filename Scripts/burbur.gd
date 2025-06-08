@@ -44,8 +44,6 @@ func _process(delta):
 		Global.playerFliped = true
 		animation_player.flip_h = true
 		animated_sprite_2d.flip_h = true
-
-	
 	# Play animations
 	if is_on_floor():
 		if direction == 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c3huv0feklfpx"]
+[gd_scene load_steps=34 format=3 uid="uid://c3huv0feklfpx"]
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -23,9 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bppo0vu2bw5tw" path="res://sprites/BG's/Sprite-0002.png" id="20_7nbq1"]
 [ext_resource type="Script" uid="uid://detmb86emfkpl" path="res://Scripts/Screen.gd" id="20_7t8sx"]
 [ext_resource type="PackedScene" uid="uid://bxg3fg24c87w2" path="res://Scenes/Save.tscn" id="23_mg4q0"]
-[ext_resource type="Texture2D" uid="uid://btqflek41ufei" path="res://sprites/save popup.png" id="24_22asu"]
-[ext_resource type="Script" uid="uid://bmqcnrv2qhy54" path="res://Scripts/Save.gd" id="25_81klo"]
-[ext_resource type="FontFile" uid="uid://dptwnn44g2d31" path="res://Fonts/ComicNeue-Bold.ttf" id="25_fkdbe"]
+[ext_resource type="PackedScene" uid="uid://dgxljpyatnw2b" path="res://Scenes/save_popup.tscn" id="23_vm72l"]
 
 [sub_resource type="Curve" id="Curve_mg4q0"]
 _limits = [-360.0, 509.85, -2.8, 1024.0]
@@ -251,67 +249,6 @@ layer = 2
 [node name="Pause Menu" parent="screen things/Camera2D/CanvasLayer" instance=ExtResource("7_4ca43")]
 visible = false
 
-[node name="SavePopup" type="Sprite2D" parent="screen things/Camera2D/CanvasLayer"]
-visible = false
-position = Vector2(160, 90)
-texture = ExtResource("24_22asu")
-script = ExtResource("25_81klo")
-
-[node name="Label" type="Label" parent="screen things/Camera2D/CanvasLayer/SavePopup"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -49.0
-offset_right = -4.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("25_fkdbe")
-theme_override_font_sizes/font_size = 11
-text = "Aye, you wanna save?"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="Yes" type="Button" parent="screen things/Camera2D/CanvasLayer/SavePopup"]
-anchors_preset = -1
-anchor_left = 0.083
-anchor_top = 0.615
-anchor_right = 0.381
-anchor_bottom = 0.923
-offset_left = -38.972
-offset_top = -26.98
-offset_right = -36.004
-offset_bottom = -23.996
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_right = NodePath("../No")
-theme_override_font_sizes/font_size = 8
-text = "YES"
-flat = true
-
-[node name="No" type="Button" parent="screen things/Camera2D/CanvasLayer/SavePopup"]
-anchors_preset = -1
-anchor_left = 0.524
-anchor_top = 0.615
-anchor_right = 0.857
-anchor_bottom = 0.902
-offset_left = -42.016
-offset_top = -26.98
-offset_right = -41.988
-offset_bottom = -22.904
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_left = NodePath("../Yes")
-theme_override_font_sizes/font_size = 8
-text = "no"
-flat = true
-
 [node name="Items" type="Sprite2D" parent="screen things/Camera2D/CanvasLayer"]
 show_behind_parent = true
 position = Vector2(310, 170)
@@ -330,6 +267,9 @@ animation = &"Active"
 autoplay = "Active"
 script = ExtResource("20_7t8sx")
 
+[node name="SavePopup" parent="screen things/Camera2D/CanvasLayer" instance=ExtResource("23_vm72l")]
+position = Vector2(160, 90)
+
 [node name="crt" type="ColorRect" parent="screen things/Camera2D/CanvasLayer"]
 self_modulate = Color(0, 0, 0, 1)
 top_level = true
@@ -345,6 +285,3 @@ metadata/_edit_group_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_exi56")
-
-[connection signal="pressed" from="screen things/Camera2D/CanvasLayer/SavePopup/Yes" to="screen things/Camera2D/CanvasLayer/SavePopup" method="_on_yes_pressed"]
-[connection signal="pressed" from="screen things/Camera2D/CanvasLayer/SavePopup/No" to="screen things/Camera2D/CanvasLayer/SavePopup" method="_on_no_pressed"]

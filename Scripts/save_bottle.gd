@@ -1,5 +1,6 @@
 extends Node2D
 var inside_area = true
+
 @onready var area_2d: Area2D = $Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
@@ -29,4 +30,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func  _process(delta: float) -> void:
 	if Global.Saving == true and Input.is_action_just_pressed("Items"):
-		save_popup.show()
+		Global._show_all(save_popup)
+	if Global.saved == true:
+		animated_sprite_2d.play("BEER")
+		animation_player.play("save")

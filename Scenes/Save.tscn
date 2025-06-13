@@ -39,7 +39,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"BEER",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -47,7 +47,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 0.0
 }]
 
 [sub_resource type="Animation" id="Animation_h6ii6"]
@@ -91,6 +91,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ypvhh"]
 resource_name = "save"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -110,7 +111,7 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.22),
+"times": PackedFloat32Array(0, 0.1, 0.166667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-1.2706, -1.08385, -2.26893]
@@ -122,7 +123,7 @@ tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.4667),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -142,7 +143,10 @@ script = ExtResource("1_kq8xm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_epr4x")
+animation = &"BEER"
 autoplay = "default"
+frame = 4
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {

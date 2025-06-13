@@ -5,9 +5,11 @@ func back():
 	if Input.is_action_just_pressed("Geodes"):
 		if in_save_data_menu == true:
 			animation_player.play_backwards("save data")
-
-func free() -> void:
+			in_save_data_menu =false
+			start.grab_focus()
+func _ready() -> void:
 	start.grab_focus()
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 			get_tree().quit()
@@ -22,9 +24,12 @@ func _on_settings_pressed() -> void:
 	null
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var save_1: Button = $Black/VBoxContainer/Save1
+
 func _on_save_data_pressed() -> void:
 	in_save_data_menu = true
 	animation_player.play("save data")
+	save_1.grab_focus()
 
 
 func _on_save_1_pressed() -> void:

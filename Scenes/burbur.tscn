@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://d32gkh7jhof5a"]
+[gd_scene load_steps=19 format=3 uid="uid://d32gkh7jhof5a"]
 
 [ext_resource type="Script" uid="uid://cowwamh8lf0jc" path="res://Scripts/burbur.gd" id="1_m5udg"]
 [ext_resource type="Texture2D" uid="uid://doeddnvmhmt3l" path="res://sprites/Rock.png" id="2_7n0wo"]
-[ext_resource type="Shader" uid="uid://dr6b3xvb4hv7a" path="res://Shaders/Glow.gdshader" id="3_ds8ke"]
 [ext_resource type="AudioStream" uid="uid://dkd50bpw20nvl" path="res://Sounds/Jump.mp3" id="4_iok6u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds8ke"]
@@ -40,7 +39,6 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iok6u"]
-shader = ExtResource("3_ds8ke")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hif3v"]
 atlas = ExtResource("2_7n0wo")
@@ -129,7 +127,8 @@ size = Vector2(4.32682, 3.84896)
 [node name="Burbur" type="CharacterBody2D" groups=["player"]]
 top_level = true
 scale = Vector2(2, 2)
-collision_mask = 3
+collision_layer = 9
+collision_mask = 11
 script = ExtResource("1_m5udg")
 
 [node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
@@ -137,6 +136,7 @@ position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_7n0wo")
 autoplay = "default"
+frame_progress = 0.783643
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationPlayer"]
 modulate = Color(7.894, 1.128, 0, 1)
@@ -155,9 +155,8 @@ autostart = true
 position = Vector2(-1, -8)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_earcd")
-animation = &"Frustrated"
+animation = &"Calm"
 autoplay = "Calm"
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

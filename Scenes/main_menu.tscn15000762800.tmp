@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://6und51rwl0sc"]
+
+[ext_resource type="Script" uid="uid://s6k3fisn578c" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="FontFile" uid="uid://dv8oweavvnpjf" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://veb426kh7nqq" path="res://sprites/BG's/pause menu.png" id="2_n45e2"]
+[ext_resource type="PackedScene" uid="uid://b1158gm705e3j" path="res://Scenes/settings.tscn" id="3_n45e2"]
+[ext_resource type="Shader" uid="uid://bo7sem5soor4h" path="res://Shaders/crt.gdshader" id="5_opfnp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
+shader = ExtResource("5_opfnp")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.0
+shader_parameter/noise_amount = 0.0
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.2
+shader_parameter/grille_size = 0.5
+shader_parameter/vignette_amount = 0.0
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/aberation_amount = 0.0
+shader_parameter/roll_line_amount = 0.0
+shader_parameter/roll_speed = 4.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -5.0
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_1ehe0")
+
+[node name="PauseMenu" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("2_n45e2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 96.0
+offset_top = 35.0
+offset_right = 233.0
+offset_bottom = 159.0
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ce3w2")
+text = "START"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ce3w2")
+text = "SETTINGS"
+
+[node name="Settings" parent="VBoxContainer/Settings" instance=ExtResource("3_n45e2")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ce3w2")
+text = "QUIT"
+
+[node name="Save data" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ce3w2")
+text = "SAVE DATA"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="crt" type="ColorRect" parent="CanvasLayer"]
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
+material = SubResource("ShaderMaterial_cp0ys")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(77.348, 56.906, 0, 0)
+metadata/_edit_group_ = true
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Save data" to="." method="_on_resume_pressed"]

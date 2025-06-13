@@ -72,6 +72,8 @@ func _process(delta):
 		Global.pickspawn_failed = false  # ✅ now it's safe to reset
 
 	move_and_slide()
+	await get_tree().process_frame
+	Global.player_pos = self.global_position
 
 func _on_eyes_timeout() -> void:
 	var total_dice_sides = 3

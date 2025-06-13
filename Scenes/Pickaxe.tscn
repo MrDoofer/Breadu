@@ -12,7 +12,7 @@ size = Vector2(8.94744, 11.9318)
 
 [node name="Pickaxe" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 6
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_hfcf5")
 gravity_scale = 0.185

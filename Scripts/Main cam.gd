@@ -4,6 +4,7 @@ extends Camera2D
 func _process(delta):
 	if is_instance_valid(burbur):
 		if not is_player_in_view():
+			Global.player_on_screen = false
 			var side = get_exit_side()
 			print("Player exited to the %s!" % side)
 
@@ -25,6 +26,7 @@ func is_player_in_view() -> bool:
 	var cam_pos = global_position
 	var screen_rect = Rect2(cam_pos - half_size, half_size * 2)
 	return screen_rect.has_point(burbur.global_position)
+	Global.player_on_screen =true
 
 func get_exit_side() -> String:
 	var cam_pos = global_position

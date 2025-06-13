@@ -80,6 +80,8 @@ sprite_frames = SubResource("SpriteFrames_e406d")
 autoplay = "default"
 
 [node name="StaticBody2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 0.625)

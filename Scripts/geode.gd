@@ -5,7 +5,7 @@ var touched = false
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var area_2d = $Area2D
-@onready var e: Sprite2D = $"../../screen things/Camera2D/CanvasLayer/E"
+@onready var e: Sprite2D = $"../../screen things/Camera2D/CanvasLayer/Geode"
 
 func _ready():
 	add_to_group("Geodes")
@@ -31,6 +31,7 @@ func _on_area_2d_body_exited(body: Node2D):
 		touched = false
 
 func _process(_delta):
+	Global.dont_stay_rendered()
 	if Global.geodes_opened.has(geode_id):
 		e.hide()
 		return

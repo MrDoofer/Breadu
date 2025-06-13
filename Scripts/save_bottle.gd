@@ -6,6 +6,7 @@ var inside_area = true
 @onready var animation_player: AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
 @onready var items: Sprite2D = $"../../screen things/Camera2D/CanvasLayer/Items"
 @onready var save_popup: Sprite2D = $"../../screen things/Camera2D/CanvasLayer/SavePopup"
+@onready var save: AnimatedSprite2D = $CanvasLayer/save
 
 
 func _ready() -> void:
@@ -16,6 +17,7 @@ func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "save":
 		animated_sprite_2d.play("default")
 		animation_player.play("RESET")
+		save.hide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	Global.Saving = true
@@ -34,3 +36,5 @@ func  _process(delta: float) -> void:
 	if Global.saved == true:
 		animated_sprite_2d.play("BEER")
 		animation_player.play("save")
+		save.show()
+		save.play("default")

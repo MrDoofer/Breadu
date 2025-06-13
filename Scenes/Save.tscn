@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxg3fg24c87w2"]
+[gd_scene load_steps=28 format=3 uid="uid://bxg3fg24c87w2"]
 
 [ext_resource type="Script" uid="uid://duuonoedsa4bb" path="res://Scripts/save_bottle.gd" id="1_kq8xm"]
 [ext_resource type="Texture2D" uid="uid://tti8fowl5541" path="res://sprites/beer bootle animation save.png" id="1_whn7m"]
+[ext_resource type="AudioStream" uid="uid://uoc82d804bdp" path="res://Sounds/Bottle.wav" id="3_h6ii6"]
+[ext_resource type="AudioStream" uid="uid://divenh4nq1rd3" path="res://Sounds/Save.wav" id="4_op7io"]
+[ext_resource type="Texture2D" uid="uid://c0d0uhpsp0uvf" path="res://sprites/save anime.png" id="5_ga7e5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kq8xm"]
 atlas = ExtResource("1_whn7m")
@@ -88,10 +91,33 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bottle:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Save:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ypvhh"]
 resource_name = "save"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -128,6 +154,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bottle:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Save:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbojr"]
 _data = {
@@ -138,20 +188,121 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq8xm"]
 size = Vector2(4, 4)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_epr4x"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypvhh"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbojr"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y26h"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paetn"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23kra"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbqop"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6hu2"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f507h"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahbsv"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq1rq"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr4ba"]
+atlas = ExtResource("5_ga7e5")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ims0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epr4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypvhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbojr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y26h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paetn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23kra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbqop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6hu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f507h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahbsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq1rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr4ba")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
 [node name="Save Bottle" type="Node2D"]
+z_index = 1
 script = ExtResource("1_kq8xm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_epr4x")
-animation = &"BEER"
 autoplay = "default"
-frame = 4
-frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
 &"": SubResource("AnimationLibrary_rbojr")
 }
+
+[node name="Bottle" type="AudioStreamPlayer" parent="AnimatedSprite2D"]
+stream = ExtResource("3_h6ii6")
+bus = &"Player and items"
+
+[node name="Save" type="AudioStreamPlayer" parent="AnimatedSprite2D"]
+stream = ExtResource("4_op7io")
+volume_db = -5.426
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
@@ -160,6 +311,15 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_kq8xm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="save" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(160, 90)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ims0")
+frame = 12
+frame_progress = 1.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

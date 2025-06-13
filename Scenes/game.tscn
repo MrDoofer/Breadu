@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=36 format=3 uid="uid://8013psc2yag6"]
+=======
+[gd_scene load_steps=31 format=3 uid="uid://8013psc2yag6"]
+>>>>>>> 52ca5e4818fd9089ba2fc1455c9ca2b3b4277d71
 
 [ext_resource type="Script" uid="uid://crmke5rcafwi1" path="res://Scripts/game.gd" id="1_o0h88"]
 [ext_resource type="PackedScene" uid="uid://d32gkh7jhof5a" path="res://Scenes/burbur.tscn" id="1_txd6a"]
@@ -6,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://bauk05youv3so" path="res://sprites/Spritesheet.png" id="3_1yb1k"]
 [ext_resource type="PackedScene" uid="uid://dlme03jybalhe" path="res://Scenes/Pickaxe.tscn" id="4_1phco"]
 [ext_resource type="PackedScene" uid="uid://cvk1i2njqmxjd" path="res://Scenes/grass.tscn" id="6_2t1ve"]
+<<<<<<< HEAD
+=======
+[ext_resource type="Texture2D" uid="uid://d1jop0p2cgwhq" path="res://upsidedown tree 1.png" id="6_7t8sx"]
+[ext_resource type="Shader" uid="uid://dds2hq8phrbw8" path="res://Shaders/Water.gdshader" id="6_olox2"]
+>>>>>>> 52ca5e4818fd9089ba2fc1455c9ca2b3b4277d71
 [ext_resource type="PackedScene" uid="uid://b7eq6rqvb2ddb" path="res://Scenes/pause_menu.tscn" id="7_4ca43"]
 [ext_resource type="PackedScene" uid="uid://bq4yirxmwb0sk" path="res://Scenes/geode.tscn" id="8_1phco"]
 [ext_resource type="Texture2D" uid="uid://cg3fqm8kmancb" path="res://sprites/tree stuff.png" id="8_7t8sx"]
@@ -137,6 +146,10 @@ texture = ExtResource("20_7nbq1")
 energy = 0.78
 blend_mode = 1
 texture = ExtResource("12_iivbl")
+
+[node name="UpsidedownTree1" type="Sprite2D" parent="map/BG\'s/Sprite-0002"]
+position = Vector2(6, -9)
+texture = ExtResource("6_7t8sx")
 
 [node name="Pick" type="Sprite2D" parent="map"]
 modulate = Color(1.1, 1.1, 10.15, 1)

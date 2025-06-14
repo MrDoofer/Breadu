@@ -298,11 +298,12 @@ libraries = {
 
 [node name="Bottle" type="AudioStreamPlayer" parent="AnimatedSprite2D"]
 stream = ExtResource("3_h6ii6")
+volume_db = -17.6
 bus = &"Player and items"
 
 [node name="Save" type="AudioStreamPlayer" parent="AnimatedSprite2D"]
 stream = ExtResource("4_op7io")
-volume_db = -5.426
+volume_db = -17.752
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8

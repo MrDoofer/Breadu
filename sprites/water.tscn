@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw7dn6o28yn5o"]
+[gd_scene load_steps=7 format=3 uid="uid://cw7dn6o28yn5o"]
 
 [ext_resource type="Shader" uid="uid://dds2hq8phrbw8" path="res://Shaders/Water.gdshader" id="1_5aoua"]
 [ext_resource type="Texture2D" uid="uid://m5sfreasoygs" path="res://sprites/2d_lights_and_shadows_neutral_point_light.webp" id="2_m6o1c"]
+[ext_resource type="AudioStream" uid="uid://dhb7htwnadpmo" path="res://Sounds/water.mp3" id="3_m6o1c"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ncfhr"]
 
@@ -26,3 +27,9 @@ z_index = 1
 material = SubResource("ShaderMaterial_0kuwi")
 scale = Vector2(1.25, 0.07)
 texture = ExtResource("2_m6o1c")
+
+[node name="Water" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_m6o1c")
+volume_db = -16.32
+autoplay = true
+playback_type = 1
